@@ -20,10 +20,6 @@ a {
     top: 10px;
 }
 
-.container2 {
-    margin: auto;
-}
-
 header {
     background-color: white;
     text-align: center;
@@ -92,13 +88,16 @@ ads ul {
 }
 
 filter-button ul {
+    margin: auto;
     display: flex;
     align-items: center;
     position: relative;
     top: 140px;
+    left: 250px;
+    gap: 30px;
 }
 
-filter-button ul li a button {
+filter-button ul li button {
     padding: auto;
     color: rgb(128, 128, 128);
     background-color: rgb(238, 237, 237);
@@ -109,15 +108,21 @@ filter-button ul li a button {
     cursor: pointer;
 }
 
-filter-button ul li:nth-child(1) {
+filter ul {
+    margin: auto;
+    display: flex;
+    align-items: center;
     position: relative;
-    left: 250px;
+    top: 160px;
+    gap: 30px;
 }
-filter-button ul li:nth-child(2) {
+
+filter ul li button {
     position: relative;
-    left: 270px;
-}
-filter-button ul li:nth-child(3) {
-    position: relative;
-    left: 290px;    
+    left: 10px;
+    background-color: rgb(238, 237, 237);
+    border-radius: 5px;
+    padding: 8px 15px;
+    font-size: 15px;    
+    cursor: pointer;
 }
