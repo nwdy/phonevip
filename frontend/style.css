@@ -13,35 +13,55 @@ a {
     text-decoration: none;
 }
 
-.container1 {
-    max-width: 1200px;
-    margin: auto;
-    position: relative;
-    top: 10px;
-}
-
 header {
     background-color: white;
+    display: flex;
+    justify-content: center;
     text-align: center;
+    width: 100%;
 }
 
-/*-------nav-------*/
-nav {
-    background-color: white;
+header img {
+    width: 100%;
+    height: auto;
 }
+
+/*--------------nav-------------*/
+nav {
+    display: flex;
+    width: 100%;
+    height: auto;
+    justify-content: center;
+}
+
+nav .nav-container {
+    background-color: white;
+    display: flex;
+    width: 100%;
+    width: 1200px;
+    margin: auto;
+    position: relative;
+    top: 20px;
+    padding: 0 20px;
+}
+
 nav ul {
     display: flex;
+    width: 100%;
     justify-content: space-between;
     align-items: center;
 }
+
 nav ul li, a, button {
     color: black;
     font-size: 20px;
 }
 
-nav ul li:nth-child(1) {
-    position: relative;
-    right: 200px;
+nav ul li:nth-child(1),  nav ul li:nth-child(2) {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 nav ul li:nth-child(2) {
@@ -49,7 +69,8 @@ nav ul li:nth-child(2) {
 }
 nav ul li:nth-child(2) input {
     height: 50px;
-    width: 400px;
+    width: 100%;
+    max-width: 400px;
     border-radius: 30px;
     padding-left: 15px;
     font-size: 17px;
@@ -61,44 +82,44 @@ nav ul li:nth-child(2) img {
     cursor: pointer;
 }
 
-nav ul li:nth-child(3) {
-    position: relative;
-    left: 200px;
+nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul li:nth-child(6) {
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-nav ul li:nth-child(4) {
-    position: relative;
-    left: 200px;
-}
-
-nav ul li:nth-child(5) {
-    position: relative;
-    left: 200px;
-}
-
-nav ul li:nth-child(6) {
-    position: relative;
-    left: 200px;
-}
-
-ads ul {
-    text-align: center;
+/* ---------------ads-------------- */
+.ads {
     position: relative;
     top: 100px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
-filter-button ul {
+.ads img {
+    width: 70%;
+}
+
+/* --------------filter-------------- */
+.filter-button , .filter{
+    display: flex;
+    width: 60%;
+    height: auto;
+}
+
+.filter-button ul, .filter ul {
     margin: auto;
     display: flex;
     align-items: center;
+    width: 50%;
     position: relative;
     top: 140px;
-    left: 250px;
     gap: 30px;
 }
 
-filter-button ul li button {
-    padding: auto;
+.filter-button ul li button {
     color: rgb(128, 128, 128);
     background-color: rgb(238, 237, 237);
     font-size: 15px;
@@ -108,25 +129,23 @@ filter-button ul li button {
     cursor: pointer;
 }
 
-filter ul {
-    margin: auto;
-    display: flex;
-    align-items: center;
+.filter ul {
     position: relative;
-    top: 160px;
-    gap: 30px;
+    top: 170px;
 }
 
-filter ul li button {
+.filter ul li button {
     position: relative;
     left: 10px;
-    background-color: rgb(238, 237, 237);
+    background-color: rgb(255, 255, 255);
+    border-color: #b0b0b0;
     border-radius: 5px;
     padding: 8px 15px;
     font-size: 15px;    
     cursor: pointer;
 }
 
+/* --------------login-------------- */
 .login-container {
     display: flex;
     width: 100%;
@@ -188,6 +207,7 @@ filter ul li button {
     text-decoration: none;
 }
 
+/* --------------register-------------- */
 .register-container {
     display: flex;
     width: 100%;
