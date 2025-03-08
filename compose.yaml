@@ -1,0 +1,54 @@
+name: phonevip
+
+services:
+  # web:
+  #   build:
+  #     context: ./frontend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "80:80"
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      db:
+        condition: service_healthy
+      # - es
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/phonevip
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: 12345678
+      SPRING_JPA_HIBERNATE_DDL_AUTO: create
+      SPRING_JPA_OPEN_IN_VIEW: false
+      SPRING_SQL_INIT_MODE: always
+    networks:
+      - phonevip_network
+  
+  db:
+    image: "postgres:latest"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 12345678
+      POSTGRES_DB: phonevip
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+    networks:
+      - phonevip_network
+
+volumes:
+  postgres_data:
+
+networks:
+  phonevip_network:
+    driver: bridge
