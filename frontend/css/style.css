@@ -247,3 +247,115 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     color: red;
     text-decoration: none;
 }
+
+/*---------------chatbot------------*/
+.chatbot {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------product--------------- */
+.product {
+    width: 45%;
+    padding: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product button {
+    padding: 70px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* ----------------account----------------- */
+.username {
+    position: absolute;
+    top: 220px;
+    right: 50px;
+    font-size: 20px;
+}
+
+.profile {
+    width: 100%;
+    display: flex;
+    padding: 150px;
+}
+
+.avatar-group {
+    width: 70%;
+    display: block;
+    justify-items: center;
+    align-items: center;
+}
+
+.avatar .shadow-avatar {
+    display: flex;
+    width: 400px;
+    height: 400px;
+    background: #ccc;
+}
+
+.avatar-group .button {
+    padding: 40px;
+}
+
+.avatar-group button {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    width: auto;
+    height: auto;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.form-group {
+    margin-bottom: 10px;
+    width: 50%;
+}
+
+.form-group .form {
+    width: 60%;
+}
+
+.form label {
+    display: block;
+}
+
+.form input {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form-group .button-group {
+    padding: 40px;
+    display: flex;
+    gap: 50px;
+}
+
+.form-group .button-group button {
+    margin-bottom: 10px;
+    padding: 5px 10px;
+    width: auto;
+    height: auto;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+

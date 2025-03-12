@@ -1,12 +1,12 @@
 name: phonevip
 
 services:
-  # web:
-  #   build:
-  #     context: ./frontend
-  #     dockerfile: Dockerfile
-  #   ports:
-  #     - "80:80"
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    ports:
+      - "80:80"
 
   backend:
     build:
