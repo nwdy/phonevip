@@ -12,6 +12,7 @@ ul {
 a {
     text-decoration: none;
 }
+/* ---------------------------------------------------index-------------------------------------------- */
 
 header {
     background-color: white;
@@ -122,7 +123,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 .filter-button ul li button {
     color: rgb(128, 128, 128);
     background-color: rgb(238, 237, 237);
-    font-size: 15px;
+    font-size: 14px;
     padding: 10px 30px;
     border: none;
     border-radius: 5px;
@@ -145,7 +146,30 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     cursor: pointer;
 }
 
-/* --------------login-------------- */
+/*---------------chatbot------------*/
+.chatbot {
+    width: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ---------------product--------------- */
+.product {
+    width: 45%;
+    padding: 170px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product button {
+    padding: 70px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+/* -----------------------------------------login--------------------------------- */
 .login-container {
     display: flex;
     width: 100%;
@@ -205,7 +229,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     text-decoration: none;
 }
 
-/* --------------register-------------- */
+/* -----------------------------------------------register----------------------------------- */
 .register-container {
     display: flex;
     width: 100%;
@@ -248,30 +272,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     text-decoration: none;
 }
 
-/*---------------chatbot------------*/
-.chatbot {
-    width: 10%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ---------------product--------------- */
-.product {
-    width: 45%;
-    padding: 170px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.product button {
-    padding: 70px;
-    border-radius: 10px;
-    cursor: pointer;
-}
-
-/* ----------------account----------------- */
+/* ---------------------------------------------account---------------------------------------- */
 .username {
     position: absolute;
     top: 220px;
@@ -297,6 +298,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     width: 400px;
     height: 400px;
     background: #ccc;
+    border-radius: 1000px;
 }
 
 .avatar-group .button {
@@ -358,4 +360,120 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     cursor: pointer;
 }
 
+/* -----------------------------------------------info-product-------------------------------------- */
 
+.information {
+    width: 80%;
+    margin: auto;
+}
+
+.product-title {
+    background-color: #f8d7da;
+    padding: 15px;
+    font-weight: bold;
+}
+
+.product-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+}
+
+.product-details img {
+    margin-left: 30px;
+}
+
+.price {
+    margin-top: 20px;
+    background-color: #f8d7da;
+    padding: 10px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.quantity {
+    display: flex;
+    align-items: center;
+}
+
+.quantity button {
+    margin-top: 20px;
+    background-color: #f8d7da;
+    border: none;
+    padding: 5px 10px;
+    cursor: pointer;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.buy-button button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px;
+    margin-bottom: 150px;
+    margin-top: 20px;
+    margin-right: 20px;
+    cursor: pointer;
+}
+
+.product-description {
+    background-color: #f8d7da;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+/* ----------------------------------cart-------------------------------- */
+.cart {
+    width: 80%;
+    margin: auto;
+}
+
+.cart-title {
+    font-weight: bold;
+    margin: 20px;
+}
+
+.cart-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+}
+
+.cart-item img {
+    width: 100px;
+}
+
+.cart-info {
+    flex: 1;
+    margin-left: 10px;
+}
+
+.delete-button {
+    font-size: 20px;
+    cursor: pointer;
+}
+.cart-action {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 20px 0;
+}
+.cart-action button {
+    padding: 15px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.buy-now button {
+    background-color: red;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 40px;
+    color: white;
+    margin-bottom: 10px;
+}

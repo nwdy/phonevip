@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../css/style.css">
-    <title>Đổi mật khẩu</title>
+    <title>Giỏ hàng</title>
 </head>
 <body>
     <header>
@@ -25,29 +25,35 @@
         </div>
     </nav>
 
-    <div class="profile">
-        <div class="username">
-            <ul>
-                Tên đăng nhập: xxxxxx
-            </ul>
+    <div class="chatbot">
+        <a href=""><img src="../images/chatbot.png" alt="chatbot"></a>
+    </div>
+
+    <div class="cart">
+        <div class="cart-title">Giỏ hàng của tôi:</div>
+
+        <div class="cart-item">
+            <input type="checkbox">
+            <img src="../images/dienthoai.png" alt="dien-thoai">
+            <div class="cart-info">
+                <p>Samsung Galaxy S25 Ultra 12GB 1TB Xanh lam</p>
+                <p class="price">30.000.000 đ</p>
+            </div>
+            <div class="quantity">
+                <button>-</button>
+                <span>1</span>
+                <button>+</button>
+            </div>
+            <div class="delete-button">🗑️</div>
         </div>
 
-        <div class="avatar-group">
-            <div class="avatar">
-                <div class="shadow-avatar"></div>
-            </div>
-        </div>
-        
-        <div class="form-group">
-            <div class="form">
-                <label>Nhập mật khẩu hiện tại</label>
-                <input type="password", placeholder="Mật khẩu hiện tại">
-                <label>Nhập mật khẩu mới</label>
-                <input type="password", placeholder="Mật khẩu mới">
-            </div>
-
-            <div class="button-group">
-                <a href="account.html"><button>Lưu</button></a>
+        <div class="cart-action">
+            <button>Chọn tất cả</button>
+            <button>Xóa sản phẩm được chọn</button>
+            <p>Số lượng sản phẩm: 1</p>
+            <div class="buy-now">
+                <button>Mua ngay</button>
+                <p>Tổng giá trị đơn hàng: 30.000.000 đ</p>
             </div>
         </div>
     </div>
