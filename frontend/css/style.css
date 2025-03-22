@@ -4,16 +4,14 @@
     box-sizing: border-box;
     font-family: Arial, Helvetica, sans-serif;
 }
-
 ul {
     list-style: none;
 }
-
 a {
     text-decoration: none;
 }
-/* ---------------------------------------------------index-------------------------------------------- */
 
+/* ---------------------------------------------------index-------------------------------------------- */
 header {
     background-color: white;
     display: flex;
@@ -21,7 +19,6 @@ header {
     text-align: center;
     width: 100%;
 }
-
 header img {
     width: 100%;
     height: auto;
@@ -34,7 +31,6 @@ nav {
     height: auto;
     justify-content: center;
 }
-
 nav .nav-container {
     background-color: white;
     display: flex;
@@ -45,26 +41,22 @@ nav .nav-container {
     top: 20px;
     padding: 0 20px;
 }
-
 nav ul {
     display: flex;
     width: 100%;
     justify-content: space-between;
     align-items: center;
 }
-
 nav ul li, a, button {
     color: black;
     font-size: 20px;
 }
-
 nav ul li:nth-child(1),  nav ul li:nth-child(2) {
     width: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
-
 nav ul li:nth-child(2) {
     position: relative;
 }
@@ -82,7 +74,6 @@ nav ul li:nth-child(2) img {
     right: 35px;
     cursor: pointer;
 }
-
 nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul li:nth-child(6) {
     width: 50%;
     display: flex;
@@ -98,7 +89,6 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     display: flex;
     justify-content: center;
 }
-
 .ads img {
     width: 70%;
 }
@@ -109,7 +99,6 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     width: 60%;
     height: auto;
 }
-
 .filter-button ul, .filter ul {
     margin: auto;
     display: flex;
@@ -119,7 +108,6 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     top: 140px;
     gap: 30px;
 }
-
 .filter-button ul li button {
     color: rgb(128, 128, 128);
     background-color: rgb(238, 237, 237);
@@ -129,12 +117,10 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border-radius: 5px;
     cursor: pointer;
 }
-
 .filter ul {
     position: relative;
     top: 170px;
 }
-
 .filter ul li button {
     position: relative;
     left: 10px;
@@ -155,18 +141,21 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 }
 
 /* ---------------product--------------- */
-.product {
-    width: 45%;
-    padding: 170px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.product-list {
+    padding: 150px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
 }
-
-.product button {
-    padding: 70px;
-    border-radius: 10px;
-    cursor: pointer;
+.product {
+    border: 1px solid #ddd;
+    padding: 10px;
+    width: 200px;
+    text-align: center;
+}
+.product img {
+    width: 100%;
+    height: auto;
 }
 
 /* -----------------------------------------login--------------------------------- */
@@ -279,20 +268,17 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     right: 50px;
     font-size: 20px;
 }
-
 .profile {
     width: 100%;
     display: flex;
     padding: 150px;
 }
-
 .avatar-group {
     width: 70%;
     display: block;
     justify-items: center;
     align-items: center;
 }
-
 .avatar .shadow-avatar {
     display: flex;
     width: 400px;
@@ -300,11 +286,9 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     background: #ccc;
     border-radius: 1000px;
 }
-
 .avatar-group .button {
     padding: 40px;
 }
-
 .avatar-group button {
     padding: 40px;
     display: flex;
@@ -320,20 +304,16 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border-radius: 10px;
     cursor: pointer;
 }
-
 .form-group {
     margin-bottom: 10px;
     width: 50%;
 }
-
 .form-group .form {
     width: 60%;
 }
-
 .form label {
     display: block;
 }
-
 .form input {
     width: 100%;
     padding: 15px;
@@ -341,13 +321,11 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
 .form-group .button-group {
     padding: 40px;
     display: flex;
     gap: 50px;
 }
-
 .form-group .button-group button {
     margin-bottom: 10px;
     padding: 5px 10px;
@@ -361,29 +339,24 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 }
 
 /* -----------------------------------------------info-product-------------------------------------- */
-
 .information {
     width: 80%;
     margin: auto;
 }
-
 .product-title {
     background-color: #f8d7da;
     padding: 15px;
     font-weight: bold;
 }
-
 .product-details {
     display: flex;
     align-items: center;
     justify-content: center;
     margin-top: 30px;
 }
-
 .product-details img {
     margin-left: 30px;
 }
-
 .price {
     margin-top: 20px;
     background-color: #f8d7da;
@@ -391,12 +364,10 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     font-size: 20px;
     font-weight: bold;
 }
-
 .quantity {
     display: flex;
     align-items: center;
 }
-
 .quantity button {
     margin-top: 20px;
     background-color: #f8d7da;
@@ -406,7 +377,6 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     margin-left: 10px;
     margin-right: 10px;
 }
-
 .buy-button button {
     background-color: red;
     color: white;
@@ -417,7 +387,6 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     margin-right: 20px;
     cursor: pointer;
 }
-
 .product-description {
     background-color: #f8d7da;
     padding: 20px;
@@ -429,12 +398,10 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     width: 80%;
     margin: auto;
 }
-
 .cart-title {
     font-weight: bold;
     margin: 20px;
 }
-
 .cart-item {
     display: flex;
     align-items: center;
@@ -442,16 +409,13 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
 }
-
 .cart-item img {
     width: 100px;
 }
-
 .cart-info {
     flex: 1;
     margin-left: 10px;
 }
-
 .delete-button {
     font-size: 20px;
     cursor: pointer;
@@ -468,12 +432,68 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border-radius: 10px;
     cursor: pointer;
 }
-
 .buy-now button {
     background-color: red;
+    color: white;
     border: none;
     border-radius: 10px;
     padding: 10px 40px;
-    color: white;
     margin-bottom: 10px;
+}
+
+.buy-now button a {
+    color: white;
+}
+
+.payment-title {
+    margin-top: 30px;
+    margin-left: 150px;
+}
+
+.payment-table table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+.payment-table table th, td {
+    border: 1px solid black;
+    padding: 30px;
+    text-align: center;
+}
+
+.payment-action {
+    display: flex;
+    justify-content: space-between;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-top: 50px;
+}
+
+.payment-input input {
+    display: flex;
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.payment-button button {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    width: auto;
+    height: auto;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
 }
