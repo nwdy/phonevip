@@ -17,12 +17,13 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collections;
-import java.util.HashSet;
 
 
 @Service
+@Transactional
 @RequiredArgsConstructor
 public class AuthService {
 
@@ -55,10 +56,9 @@ public class AuthService {
         registerRequest.setPassword(encoder.encode(registerRequest.getPassword()));
         User user = UserMapper.INSTANCE.toUser(registerRequest);
 
-//        Role userRole = roleRepository.findByName(ERole.USER)
-//                .orElseThrow(() -> new AppException(ErrorCode.ROLE_NOT_FOUND));
-//
-//        user.setRoles(new HashSet<>(Collections.singleton(userRole)));
+        Role userRole = roleRepository.findByName(ERole.USER)
+                .orElseThrow(() -> new AppException(ErrorCode.ROLE_NOT_FOUND));
+        user.setRoles(Collections.singleton(userRole));
         userRepository.save(user);
     }
 
