@@ -262,7 +262,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 }
 
 /* ---------------------------------------------account---------------------------------------- */
-.username {
+.username-info {
     position: absolute;
     top: 220px;
     right: 50px;
@@ -440,16 +440,15 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     padding: 10px 40px;
     margin-bottom: 10px;
 }
-
 .buy-now button a {
     color: white;
 }
 
+/* --------------------------------------------------payment---------------------------------------------- */
 .payment-title {
     margin-top: 30px;
     margin-left: 150px;
 }
-
 .payment-table table {
     width: 100%;
     display: flex;
@@ -457,13 +456,11 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border-collapse: collapse;
     margin-top: 20px;
 }
-
 .payment-table table th, td {
     border: 1px solid black;
     padding: 30px;
     text-align: center;
 }
-
 .payment-action {
     display: flex;
     justify-content: space-between;
@@ -471,7 +468,6 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     margin-right: 200px;
     margin-top: 50px;
 }
-
 .payment-input input {
     display: flex;
     width: 100%;
@@ -480,7 +476,6 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border: 1px solid #ccc;
     border-radius: 5px;
 }
-
 .payment-button button {
     padding: 40px;
     display: flex;
@@ -496,4 +491,47 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border: none;
     border-radius: 10px;
     cursor: pointer;
+}
+.payment-button button a {
+    color: white;
+}
+
+/* --------------payment status------------------ */
+.status-image {
+    display: flex;
+    margin-top: 50px;
+    justify-content: center;
+}
+.status-image img {
+    width: 20%;
+}
+.status {
+    margin-top: 20px;
+}
+.status p {
+    display: flex;
+    justify-content: center;
+}
+.return-button {
+    margin-top: 40px;
+    margin-left: 80%;
+}
+.return-button button {
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    padding: 5px 10px;
+    width: auto;
+    height: auto;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.return-button button a {
+    color: white;
 }

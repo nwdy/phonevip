@@ -26,9 +26,9 @@
     </nav>
 
     <div class="profile">
-        <div class="username">
+        <div class="username-info">
             <ul>
-                Tên đăng nhập: xxxxxx
+                <p>Tên đăng nhập: <span id="username"></span></p>
             </ul>
         </div>
 
@@ -44,20 +44,22 @@
         <div class="form-group">
             <div class="form">
                 <label>Họ và tên</label>
-                <input type="text", value="">
+                <input type="text", id="name", value="">
                 <label>Email</label>
-                <input type="text", value="">
+                <input type="text", id="email", value="">
                 <label>Số điện thoại</label>
-                <input type="text", value="">
+                <input type="text", id="phone", value="">
                 <label>Địa chỉ (chi tiết)</label>
-                <input type="text", value="">
+                <input type="text", id="address", value="">
             </div>
 
             <div class="button-group">
-                <button>Lưu</button>
+                <button id="save-button">Lưu</button>
                 <a href="change-password.html"><button>Đổi mật khẩu</button></a>
             </div>
         </div>
     </div>
+
+    <script src="../js/account.js"></script>
 </body>
 </html>

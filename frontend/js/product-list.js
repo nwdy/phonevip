@@ -13,7 +13,7 @@ async function fetchProducts() {
         
         const data = await response.json();
 
-        console.log(data);
+        // console.log(data);
         
         // if (!data.products || !Array.isArray(data.products)) {
         //     throw new Error('Invalid response format: Missing or incorrect "products" field');
@@ -31,7 +31,7 @@ function displayProducts(products) {
     productList.innerHTML = '';
     
     products.forEach(product => {
-        if (!product.id || !product.name || !product.imageUrl || !product.price) {
+        if (!product.id || !product.name || !product.imageUrl || !product.price || !product.rating) {
             console.warn('Bỏ qua sản phẩm do dữ liệu không hợp lệ:', product);
             return;
         }
@@ -43,7 +43,8 @@ function displayProducts(products) {
                 <img src="../images/${product.imageUrl}" alt="${product.name}">
                 <ul>
                     <li>${product.name}</li>
-                    <li>${product.price.toLocaleString()} đ</li>
+                    <li>${product.price} đ</li>
+                    <li>⭐ ${product.rating}</li>
                 </ul>
             </a>
         `;

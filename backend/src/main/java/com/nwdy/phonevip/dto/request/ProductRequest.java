@@ -15,4 +15,5 @@ public class ProductRequest {
     private int ram;
     private int storage;
     private String color;
+    private double rating;
 }
