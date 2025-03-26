@@ -35,10 +35,8 @@ public class UserService {
     public UserResponse updateUserInfo(UserUpdateRequest request) {
         User currentUser = userRepository.findByUsername(getCurrentUsername())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
-        
-        validatePassword(request.getPassword(), currentUser.getPassword());
+
         validateUsernameAndEmail(request, currentUser);
-        
         updateUserFromRequest(request, currentUser);
         return UserMapper.INSTANCE.toUserResponse(userRepository.save(currentUser));
     }
@@ -126,8 +124,5 @@ public class UserService {
 
     private void updateUserFromRequest(UserUpdateRequest request, User user) {
         UserMapper.INSTANCE.updateUser(request, user);
-        if (request.getPassword() != null && !request.getPassword().isEmpty()) {
-            user.setPassword(encoder.encode(request.getPassword()));
-        }
     }
 }
