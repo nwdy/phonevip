@@ -54,7 +54,7 @@ public class User {
     )
     private Set<Role> roles;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user", cascade = CascadeType.ALL)
     private List<Order> orders;
 
     @OneToOne(mappedBy = "user", cascade = CascadeType.ALL)
