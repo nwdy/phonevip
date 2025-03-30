@@ -32,30 +32,19 @@
     <div class="cart">
         <div class="cart-title">Giỏ hàng của tôi:</div>
 
-        <div class="cart-item">
-            <input type="checkbox">
-            <img src="../images/dienthoai.png" alt="dien-thoai">
-            <div class="cart-info">
-                <p>Samsung Galaxy S25 Ultra 12GB 1TB Xanh lam</p>
-                <p class="price">30.000.000 đ</p>
-            </div>
-            <div class="quantity">
-                <button>-</button>
-                <span>1</span>
-                <button>+</button>
-            </div>
-            <div class="delete-button">🗑️</div>
-        </div>
+        <div class="cart-items" id="cart-items"></div>
 
         <div class="cart-action">
-            <button>Chọn tất cả</button>
-            <button>Xóa sản phẩm được chọn</button>
-            <p>Số lượng sản phẩm: 1</p>
+            <button onclick="selectAll()">Chọn tất cả</button>
+            <button onclick="deleteSelected()">Xóa sản phẩm được chọn</button>
+            <p id="total-quantity">Số lượng sản phẩm: </p>
             <div class="buy-now">
                 <button><a href="payment.html">Mua ngay</a></button>
-                <p>Tổng giá trị đơn hàng: 30.000.000 đ</p>
+                <p id="total-price">Tổng giá trị đơn hàng: </p>
             </div>
         </div>
     </div>
+
+    <script src="../js/cart.js"></script>
 </body>
 </html>

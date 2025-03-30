@@ -35,22 +35,22 @@
         <div class="product-details">
             <div class="left">
                 <div class="product-image">
-                    <img src="../images/dienthoai.png" alt="s25 ultra 12gb 1tb">
+                    <img src="../images/dienthoai.png" alt="dien thoai">
                 </div>
             </div>
             
             <div class="right">
                 <div class="product-info">
                     <p></p>  
-                    <div class="price"></div>
+                    <div class="price" id="product-price"></div>
                     <div class="quantity">
-                        <button>-</button>
-                        <span>1</span>
-                        <button>+</button>
+                        <button onclick="updateQuantity(-1)">-</button>
+                        <span id="quantity">1</span>
+                        <button onclick="updateQuantity(1)">+</button>
                     </div>
                     <div class="buy-button">
                         <button>Mua ngay</button>
-                        <button>Thêm vào giỏ hàng</button>
+                        <button onclick="addToCart()">Thêm vào giỏ hàng</button>
                     </div>
                 </div>
             </div>

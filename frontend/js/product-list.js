@@ -13,12 +13,6 @@ async function fetchProducts() {
         
         const data = await response.json();
 
-        // console.log(data);
-        
-        // if (!data.products || !Array.isArray(data.products)) {
-        //     throw new Error('Invalid response format: Missing or incorrect "products" field');
-        // }
-        
         displayProducts(data.data);
     } catch (error) {
         console.error('Lỗi khi tải sản phẩm:', error);

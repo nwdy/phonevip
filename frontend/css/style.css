@@ -192,26 +192,29 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 }
 .login h2 {
     margin-bottom: 20px;
+    font-size: 40px;
 }
 .login input {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
+    font-size: 17px;
 }
 .login button {
     width: 100%;
+    margin-top: 5px;
     padding: 10px;
     background: red;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 .register-link {
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 17px;
 }
 .register-link a {
     color: red;
@@ -235,13 +238,15 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 }
 .register h2 {
     margin-bottom: 20px;
+    font-size: 40px;
 }
 .register input {
     width: 100%;
-    padding: 10px;
+    padding: 15px;
     margin: 10px 0;
     border: 1px solid #ccc;
-    border-radius: 5px;
+    border-radius: 10px;
+    font-size: 17px;
 }
 .register button {
     width: 100%;
@@ -249,12 +254,12 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     background: red;
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 10px;
     cursor: pointer;
 }
 .login-link {
     margin-top: 10px;
-    font-size: 14px;
+    font-size: 17px;
 }
 .login-link a {
     color: red;
@@ -320,6 +325,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
+    font-size: 15px;
 }
 .form-group .button-group {
     padding: 40px;
@@ -377,6 +383,11 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     margin-left: 10px;
     margin-right: 10px;
 }
+
+.quantity span {
+    margin-top: 20px;
+}
+
 .buy-button button {
     background-color: red;
     color: white;
@@ -409,8 +420,14 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
 }
-.cart-item img {
+.cart-items img {
     width: 100px;
+}
+.cart-item .quantity {
+    margin-top: 20px;
+}
+.cart-item .delete-button {
+    margin-top: 35px;
 }
 .cart-info {
     flex: 1;
@@ -511,6 +528,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 .status p {
     display: flex;
     justify-content: center;
+    font-size: 25px;
 }
 .return-button {
     margin-top: 40px;
