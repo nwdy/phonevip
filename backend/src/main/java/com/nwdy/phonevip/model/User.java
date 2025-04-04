@@ -32,9 +32,11 @@ public class User {
     @Column(unique = true, nullable = false)
     private String email;
 
-//    @Column(nullable = false)
-//    private String phone;
-//
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    private String address;
+
 //    @Column(name = "image_url")
 //    private String imageUrl;
 //

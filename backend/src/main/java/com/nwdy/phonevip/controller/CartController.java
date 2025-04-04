@@ -37,7 +37,7 @@ public class CartController {
     @PutMapping("/me/cartItems/{cartItemId}")
     public ResponseEntity<ApiResponse<Void>> updateCartItem(
             @PathVariable Long cartItemId,
-            @RequestBody CartItemUpdateRequest request
+            @Valid @RequestBody CartItemUpdateRequest request
     ) {
         cartService.updateCartItem(cartItemId, request);
         return ResponseEntity.ok(ApiResponse.success(

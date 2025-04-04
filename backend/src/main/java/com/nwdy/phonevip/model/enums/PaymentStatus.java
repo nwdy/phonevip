@@ -1,6 +1,6 @@
 package com.nwdy.phonevip.model.enums;
 
-public enum OrderStatus {
+public enum PaymentStatus {
     PENDING,
     COMPLETED,
     CANCELLED
