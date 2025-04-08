@@ -141,6 +141,9 @@ async function updateQuantity(cartItemId, change) {
             throw new Error(`HTTP error! Status: ${response.status} - ${responseData.message || "Unknown error"}`);
         }
 
+        // const checkbox = document.querySelector(`.cart-checkbox[data-id='${cartItemId}']`);
+        // if (checkbox) checkbox.checked = true;
+
         await loadCart();
     } catch (error) {
         console.error("Lỗi khi cập nhật số lượng:", error);

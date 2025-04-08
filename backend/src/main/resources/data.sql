@@ -44,9 +44,9 @@ INSERT INTO cart_items (quantity, product_id, updated_at, cart_id, selected) VAL
     (1, 1, '2025-03-03 09:30:15', 1, true),
     (2, 2, '2025-03-03 09:32:00', 1, true);
 
-INSERT INTO orders (total_price, created_at, updated_at, user_id, status) VALUES
-    (38000000, '2025-03-03 09:34:10', '2025-03-03 09:34:10', 2, 'COMPLETED');
-
-INSERT INTO order_items (order_id, product_id, quantity) VALUES
-    (1, 1, 1),
-    (1, 2, 2);
+-- INSERT INTO orders (total_price, created_at, user_id, payment_status) VALUES
+--     (38000000, '2025-03-03 09:34:10', 2, 'PENDING');
+--
+-- INSERT INTO order_items (order_id, product_id, quantity) VALUES
+--     (1, 1, 1),
+--     (1, 2, 2);

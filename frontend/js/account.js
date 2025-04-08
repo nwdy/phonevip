@@ -49,8 +49,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("username").textContent = userData.data.username;
         document.getElementById("name").value = userData.data.name;
         document.getElementById("email").value = userData.data.email;
-        // document.getElementById("phone").value = userData.data.phone;
-        // document.getElementById("address").value = userData.data.address;
+        document.getElementById("phoneNumber").value = userData.data.phoneNumber;
+        document.getElementById("address").value = userData.data.address;
     } catch (error) {
         console.error("Lỗi khi tải thông tin người dùng:", error);
     }
@@ -60,6 +60,8 @@ document.getElementById("save-button").addEventListener("click", async function 
     const name = document.getElementById("name").value;
     const username = document.getElementById("username").textContent.trim();
     const email = document.getElementById("email").value;
+    const phoneNumber = document.getElementById("phoneNumber").value;
+    const address = document.getElementById("address").value;
     const token = localStorage.getItem("token");
 
     try {
@@ -72,7 +74,9 @@ document.getElementById("save-button").addEventListener("click", async function 
             body: JSON.stringify({
                 name: name,
                 username: username,
-                email: email
+                email: email,
+                phoneNumber: phoneNumber,
+                address: address
             })
         });
         

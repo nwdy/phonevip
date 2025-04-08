@@ -11,6 +11,22 @@ a {
     text-decoration: none;
 }
 
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
+table th, table td {
+    border: 1px solid #000000;
+    padding: 8px;
+    text-align: left;
+}
+
+table tr {
+    display: table-row;
+}
+
 /* ---------------------------------------------------index-------------------------------------------- */
 header {
     background-color: white;
@@ -466,9 +482,8 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     margin-top: 30px;
     margin-left: 150px;
 }
-.payment-table table {
-    width: 100%;
-    display: flex;
+/* .payment-table table {
+    width: 80%;
     justify-content: center;
     border-collapse: collapse;
     margin-top: 20px;
@@ -477,7 +492,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border: 1px solid black;
     padding: 30px;
     text-align: center;
-}
+} */
 .payment-action {
     display: flex;
     justify-content: space-between;

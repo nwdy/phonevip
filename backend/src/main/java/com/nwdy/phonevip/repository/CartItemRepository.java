@@ -1,6 +1,8 @@
 package com.nwdy.phonevip.repository;
 
 import com.nwdy.phonevip.dto.response.CartItemDTO;
+import com.nwdy.phonevip.dto.response.OrderItemDTO;
+import com.nwdy.phonevip.dto.SelectedOrderItemDTO;
 import com.nwdy.phonevip.model.CartItem;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -20,5 +22,23 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
             "WHERE u.username = :username")
     List<CartItemDTO> findByUsername(@Param("username") String username);
 
+    @Query("SELECT new com.nwdy.phonevip.dto.response.OrderItemDTO(p.name, p.price, ci.quantity) " +
+            "FROM CartItem ci " +
+            "JOIN ci.product p " +
+            "JOIN ci.cart c " +
+            "JOIN c.user u " +
+            "WHERE u.username = :username")
+    List<OrderItemDTO> findOrderItemDTOsByUsername(@Param("username") String username);
+
     Optional<CartItem> findByIdAndCart_User_Username(Long id, String username);
+
+    @Query("SELECT new com.nwdy.phonevip.dto.SelectedOrderItemDTO(ci.id, p, ci.quantity) " +
+            "FROM CartItem ci " +
+            "JOIN ci.product p " +
+            "JOIN ci.cart c " +
+            "JOIN c.user u " +
+            "WHERE u.username = :username AND ci.selected = TRUE")
+    List<SelectedOrderItemDTO> findSelectedOrderItemDTOsByUsername(@Param("username") String username);
+
+    void deleteByIdIn(List<Long> ids);
 }
