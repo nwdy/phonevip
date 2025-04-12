@@ -32,9 +32,9 @@
         
         <div class="filter-button">
             <ul>
-                <li><a href=""><button>Giá giảm dần</button></a></li>
-                <li><a href=""><button>Giá tăng dần</button></a></li>
-                <li><a href=""><button>Rating</button></a></li>
+                <li><button onclick="filterProducts('price,desc')">Giá giảm dần</button></li>
+                <li><button onclick="filterProducts('price,asc')">Giá tăng dần</button></li>
+                <li><button onclick="filterProducts('rating,desc')">Rating</button></li>
             </ul>
         </div>
     
@@ -46,10 +46,15 @@
         </div>
 
         <div class="chatbot">
-            <a href=""><img src="../images/chatbot.png" alt="chatbot"></a>
+            <a href=""><img src="../images/chatbot.png" alt="chatbot", width="75"></a>
         </div>
 
         <div class="product-list" id="product-list"></div>
+
+        <div class="pagination">
+            <button id="prev-button" onclick="changePage(-1)">Trang trước đó</button>
+            <button id="next-button" onclick="changePage(1)">Trang tiếp theo</button>
+        </div>
     </div>
     <script src="../js/product-list.js"></script>
 </body>
