@@ -1,12 +1,15 @@
 package com.nwdy.phonevip.service;
 
 import com.nwdy.phonevip.dto.request.ProductRequest;
+import com.nwdy.phonevip.dto.response.ProductDetailResponse;
 import com.nwdy.phonevip.dto.response.ProductResponse;
+import com.nwdy.phonevip.dto.response.ProductReviewDTO;
 import com.nwdy.phonevip.exception.AppException;
 import com.nwdy.phonevip.exception.ErrorCode;
 import com.nwdy.phonevip.mapper.ProductMapper;
 import com.nwdy.phonevip.model.Product;
 import com.nwdy.phonevip.repository.ProductRepository;
+import com.nwdy.phonevip.repository.ReviewRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +27,8 @@ import java.util.stream.Collectors;
 public class ProductService {
 
     private final ProductRepository productRepository;
+
+    private final ReviewRepository reviewRepository;
 
     // Get a list of products
     public List<ProductResponse> getAllProducts(int page, int size, String sort) {
@@ -47,10 +52,14 @@ public class ProductService {
     }
 
     // Get a product detail
-    public ProductResponse getProductById(Long id) {
-        return productRepository.findById(id)
-                .map(ProductMapper.INSTANCE::toProductResponse)
+    public ProductDetailResponse getProductById(Long id) {
+        ProductDetailResponse response = productRepository.findById(id)
+                .map(ProductMapper.INSTANCE::toProductDetailResponse)
                 .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_FOUND));
+
+        List<ProductReviewDTO> reviews = reviewRepository.findProductReviewDTOByProductId(id);
+        response.setReviews(reviews);
+        return response;
     }
 
     // Add a new product

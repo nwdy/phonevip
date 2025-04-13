@@ -2,9 +2,7 @@ package com.nwdy.phonevip.service;
 
 import com.nwdy.phonevip.dto.SelectedOrderItemDTO;
 import com.nwdy.phonevip.dto.request.AddressRequest;
-import com.nwdy.phonevip.dto.response.OrderDTO;
-import com.nwdy.phonevip.dto.response.OrderItemDTO;
-import com.nwdy.phonevip.dto.response.OrderResponse;
+import com.nwdy.phonevip.dto.response.*;
 import com.nwdy.phonevip.exception.AppException;
 import com.nwdy.phonevip.exception.ErrorCode;
 import com.nwdy.phonevip.mapper.OrderMapper;
@@ -13,6 +11,7 @@ import com.nwdy.phonevip.model.enums.PaymentStatus;
 import com.nwdy.phonevip.repository.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -38,17 +37,18 @@ public class OrderService {
 
     private BigDecimal totalPrice;
 
-    public OrderResponse purchase() {
+    public OrderInfoResponse purchase() {
         List<OrderItemDTO> orderItemDTOList = cartItemRepository.findOrderItemDTOsByUsername(getCurrentUsername());
         User user = userRepository.findByUsername(getCurrentUsername())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
-        OrderResponse orderResponse = new OrderResponse(orderItemDTOList, user.getPhoneNumber(), user.getAddress());
-        totalPrice = orderResponse.getTotalPrice();
-        return orderResponse;
+        OrderInfoResponse orderInfoResponse = new OrderInfoResponse(orderItemDTOList, user.getPhoneNumber(), user.getAddress());
+        totalPrice = orderInfoResponse.getTotalPrice();
+        return orderInfoResponse;
     }
 
     public OrderDTO createOrder(AddressRequest request) {
         Order order = new Order();
+        // Update user address
         User user = userRepository.findByUsername(getCurrentUsername())
                 .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
 
@@ -56,28 +56,40 @@ public class OrderService {
         user.setAddress(request.getAddress());
         userRepository.save(user);
 
-        // TODO: Using UUID for orderId
-//        order.setId(8L);
+        // Save the order
         order.setUser(user);
         order.setTotalPrice(totalPrice);
-        System.out.println("total price = " + totalPrice);
+        order.setTransactionNo("000"); // Initial transaction number
         order.setPaymentStatus(PaymentStatus.PENDING);
         orderRepository.save(order);
-        log.info("Order created {}, id {}, total price {}", order, order.getId(), order.getTotalPrice());
+        log.info("Order created {}, id {}, order code {}, total price {}", order, order.getId(), order.getOrderCode(), order.getTotalPrice());
         return OrderMapper.INSTANCE.toOrderDTO(order);
     }
 
-    public void processAfterPayment(Long orderId) {
-        System.out.println("Processing after payment: orderId = " + orderId);
-        Order order = orderRepository.findById(orderId)
+    public void processAfterPayment(String orderCode, String vnp_ResponseCode, String vnp_TransactionNo) {
+        System.out.println("Processing after payment: orderCode = " + orderCode);
+        Order order = orderRepository.findByOrderCode(orderCode)
                 .orElseThrow(() -> new AppException(ErrorCode.ORDER_NOT_FOUND));
+
+        // Update order
+        // Update payment status
+        if ("00".equals(vnp_ResponseCode)) {
+            order.setPaymentStatus(PaymentStatus.COMPLETED);
+        } else {
+            order.setPaymentStatus(PaymentStatus.CANCELLED);
+        }
+
+        // Update VNPay transaction number
+        order.setTransactionNo(vnp_TransactionNo);
+        orderRepository.save(order);
+
 
         System.out.println("Getting cart items for saving order");
         List<SelectedOrderItemDTO> selectedItems = cartItemRepository
                 .findSelectedOrderItemDTOsByUsername(order.getUser().getUsername());
 
         if (selectedItems.isEmpty()) {
-            log.warn("Order {} has no cart items", orderId);
+            log.warn("Order {} has no cart items", orderCode);
         }
 
         for (SelectedOrderItemDTO item : selectedItems) {
@@ -102,31 +114,51 @@ public class OrderService {
         List<Long> cartItemIds = selectedItems.stream().map(SelectedOrderItemDTO::getCartItemId).toList();
         if (!cartItemIds.isEmpty()) {
             cartItemRepository.deleteByIdIn(cartItemIds);
-            System.out.println("Deleted " + cartItemIds.size() + " cart items for order " + orderId);
+            System.out.println("Deleted " + cartItemIds.size() + " cart items for order " + orderCode);
         } else {
             System.out.println("No cart items found");
         }
 
     }
 
-    public boolean orderExists(Long orderId) {
-        return orderRepository.existsById(orderId);
+    public List<OrderHistoryDTO> getOrderHistory() {
+        List<OrderHistoryDTO> orders = orderRepository.findHistoricalOrderDTOsByUsername(getCurrentUsername());
+        for (OrderHistoryDTO order : orders) {
+            List<OrderItemDTO> items = orderItemRepository.findOrderItemsByOrderId(order.getOrderId());
+            order.setOrderItemDTOList(items);
+        }
+        return orders;
+    }
+
+    public List<OrderItemReviewDTO> getOrderItemReviews(Long orderId) {
+        User user = userRepository.findByUsername(getCurrentUsername())
+                .orElseThrow(() -> new AppException(ErrorCode.USER_NOT_FOUND));
+        Order order = orderRepository.findById(orderId)
+                .orElseThrow(() -> new AppException(ErrorCode.ORDER_NOT_FOUND));
+        if (!order.getUser().getId().equals(user.getId())) {
+            throw new AppException(ErrorCode.ORDER_NOT_FOUND);
+        }
+
+        return orderItemRepository.findOrderItemReviewDTOByOrderId(orderId);
+    }
+
+    @PreAuthorize("hasRole('ADMIN')")
+    public List<OrderResponse> getOrders() {
+        return orderRepository.findAllOrders();
+    }
+
+    public boolean orderExists(String orderCode) {
+        return orderRepository.existsByOrderCode(orderCode);
     }
 
     public String getAmount() {
         return String.valueOf(BigDecimal.valueOf(100).multiply(totalPrice).longValue());
     }
 
-    public PaymentStatus getPaymentStatus(Long orderId) {
-        Order order = orderRepository.findById(orderId)
+    public PaymentStatus getPaymentStatus(String orderCode) {
+        Order order = orderRepository.findByOrderCode(orderCode)
                 .orElseThrow(() -> new AppException(ErrorCode.ORDER_NOT_FOUND));
         return order.getPaymentStatus();
-    }
-
-    public void updatePaymentStatus(Long orderId, PaymentStatus paymentStatus) {
-        Order order = orderRepository.findById(orderId)
-                .orElseThrow(() -> new AppException(ErrorCode.ORDER_NOT_FOUND));
-        order.setPaymentStatus(paymentStatus);
     }
 
     private String getCurrentUsername() {

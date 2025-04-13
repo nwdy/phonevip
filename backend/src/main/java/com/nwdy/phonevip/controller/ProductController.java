@@ -2,6 +2,7 @@ package com.nwdy.phonevip.controller;
 
 import com.nwdy.phonevip.dto.request.ProductRequest;
 import com.nwdy.phonevip.dto.response.ApiResponse;
+import com.nwdy.phonevip.dto.response.ProductDetailResponse;
 import com.nwdy.phonevip.dto.response.ProductResponse;
 import com.nwdy.phonevip.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -31,7 +32,7 @@ public class ProductController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ApiResponse<ProductResponse>> getProduct(@PathVariable Long id) {
+    public ResponseEntity<ApiResponse<ProductDetailResponse>> getProduct(@PathVariable Long id) {
         return ResponseEntity.ok(ApiResponse.success(
                 "Product found",
                 productService.getProductById(id))
