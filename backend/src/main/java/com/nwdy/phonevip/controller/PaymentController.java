@@ -36,8 +36,4 @@ public class PaymentController {
         return ResponseEntity.ok(ipnResponse);
     }
 
-//    @GetMapping("/vnpay-payment")
-//    public ResponseEntity<String> getPaymentResult() {
-//        return ResponseEntity.ok("Showed payment result");
-//    }
 }
