@@ -22,7 +22,7 @@ public interface CartItemRepository extends JpaRepository<CartItem, Long> {
             "WHERE u.username = :username")
     List<CartItemDTO> findByUsername(@Param("username") String username);
 
-    @Query("SELECT new com.nwdy.phonevip.dto.response.OrderItemDTO(p.name, p.price, ci.quantity) " +
+    @Query("SELECT new com.nwdy.phonevip.dto.response.OrderItemDTO(ci.id, p.name, p.price, ci.quantity) " +
             "FROM CartItem ci " +
             "JOIN ci.product p " +
             "JOIN ci.cart c " +

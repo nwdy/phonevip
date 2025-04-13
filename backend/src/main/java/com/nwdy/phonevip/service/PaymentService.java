@@ -32,8 +32,8 @@ public class PaymentService {
         OrderDTO orderDTO = orderService.createOrder(request);
 
         long amount = orderDTO.getTotalPrice().longValue();
-        String orderId = String.valueOf(orderDTO.getOrderId());
-        String orderInfo = String.format("Thanh toan don hang %s", orderDTO.getOrderId());
+        String orderId = orderDTO.getOrderCode();
+        String orderInfo = String.format("Thanh toan don hang %s", orderDTO.getOrderCode());
 
         String vnp_Url = createReturnUrl(amount, orderId, orderInfo, baseUrl);
         log.info("[VNPay] return url: {}", vnp_Url);
@@ -44,7 +44,7 @@ public class PaymentService {
         return paymentResponse;
     }
 
-    private String createReturnUrl(long amount, String orderId, String orderInfo, String baseUrl) {
+    private String createReturnUrl(long amount, String orderCode, String orderInfo, String baseUrl) {
 
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
@@ -62,7 +62,7 @@ public class PaymentService {
         vnp_Params.put("vnp_Amount", String.valueOf(amount * 100L));
         vnp_Params.put("vnp_CurrCode", "VND");
 
-        vnp_Params.put("vnp_TxnRef", orderId);
+        vnp_Params.put("vnp_TxnRef", orderCode);
         vnp_Params.put("vnp_OrderInfo", orderInfo);
         vnp_Params.put("vnp_OrderType", orderType);
 
@@ -136,18 +136,16 @@ public class PaymentService {
             //          PaymentStatus = 1; success
             //          PaymentStatus = 2; Fail
 
-            // Begin process return from VNPAY
-            Map<String, String> fields = extractFieldsFromRequest(request);
-
             // Check checksum
+            Map<String, String> fields = extractFieldsFromRequest(request);
             String vnp_SecureHash = request.getParameter("vnp_SecureHash");
             if (!validateChecksum(vnp_SecureHash, fields)) {
                 return VnpIpnResponseConst.INVALID_CHECKSUM;
             }
 
             // Check orderId (vnp_TxnRef) in the database
-            Long orderId = Long.valueOf(request.getParameter("vnp_TxnRef"));
-            if (!validateOrderExists(orderId)) {
+            String orderCode = request.getParameter("vnp_TxnRef");
+            if (!validateOrderExists(orderCode)) {
                 return VnpIpnResponseConst.ORDER_NOT_FOUND;
             }
 
@@ -158,14 +156,14 @@ public class PaymentService {
             }
 
             // Check payment status of order (expected status = PENDING)
-            if (!validatePaymentStatus(orderId)) {
+            if (!validatePaymentStatus(orderCode)) {
                 return VnpIpnResponseConst.ORDER_ALREADY_CONFIRMED;
             }
 
+            // Process after payment
             String vnp_ResponseCode = request.getParameter("vnp_ResponseCode");
-            // TODO: Fix bug
-            updatePaymentStatus(orderId, vnp_ResponseCode);
-            orderService.processAfterPayment(orderId);
+            String vnp_TransactionNo = request.getParameter("vnp_TransactionNo");
+            orderService.processAfterPayment(orderCode, vnp_ResponseCode, vnp_TransactionNo);
 
             return VnpIpnResponseConst.SUCCESS;
         }
@@ -197,8 +195,8 @@ public class PaymentService {
         return vnp_SecureHash.equals(signValue);
     }
 
-    private boolean validateOrderExists(Long orderId) {
-        return orderService.orderExists(orderId);
+    private boolean validateOrderExists(String orderCode) {
+        return orderService.orderExists(orderCode);
     }
 
     private boolean validateOrderAmount(String amount) {
@@ -207,15 +205,7 @@ public class PaymentService {
         return totalPrice.equals(amount);
     }
 
-    private boolean validatePaymentStatus(Long orderId) {
-        return orderService.getPaymentStatus(orderId) == PaymentStatus.PENDING;
-    }
-
-    private void updatePaymentStatus(Long orderId, String paymentStatus) {
-        if ("00".equals(paymentStatus)) {
-            orderService.updatePaymentStatus(orderId, PaymentStatus.COMPLETED);
-        } else {
-            orderService.updatePaymentStatus(orderId, PaymentStatus.CANCELLED);
-        }
+    private boolean validatePaymentStatus(String orderCode) {
+        return orderService.getPaymentStatus(orderCode) == PaymentStatus.PENDING;
     }
 }
