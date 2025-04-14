@@ -18,8 +18,8 @@ import java.nio.charset.StandardCharsets;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-@Service
 @Slf4j
+@Service
 @Transactional
 @RequiredArgsConstructor
 public class PaymentService {
