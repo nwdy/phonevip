@@ -67,7 +67,7 @@ INSERT INTO products (name, price, image_url, description, stock, manufacturer, 
     ('iPhone 15 Pro Max 256GB', 29990000, '44.jpg', 'Mô tả chi tiết (bổ sung sau)', 100, 'Apple', 8, 256, 'white', 4.7, '2025-03-01 10:00:00', '2025-03-01 10:00:00'),
     ('iPhone 15 Pro Max 512GB', 34590000, '45.jpg', 'Mô tả chi tiết (bổ sung sau)', 100, 'Apple', 8, 512, 'white', 4.7, '2025-03-01 10:00:00', '2025-03-01 10:00:00'),
 -- 46-50
-    (' iPhone 15 Pro Max 1TB', 39990000, '46.jpg', 'Mô tả chi tiết (bổ sung sau)', 100, 'Apple', 8, 1, 'white', 4.7, '2025-03-01 10:00:00', '2025-03-01 10:00:00'),
+    ('iPhone 15 Pro Max 1TB', 39990000, '46.jpg', 'Mô tả chi tiết (bổ sung sau)', 100, 'Apple', 8, 1, 'white', 4.7, '2025-03-01 10:00:00', '2025-03-01 10:00:00'),
     ('iPhone 15 Plus 128GB', 19790000, '47.jpg', 'Mô tả chi tiết (bổ sung sau)', 100, 'Apple', 6, 128, 'white', 4.7, '2025-03-01 10:00:00', '2025-03-01 10:00:00'),
     ('iPhone 15 Plus 256GB', 22790000, '48.jpg', 'Mô tả chi tiết (bổ sung sau)', 100, 'Apple', 6, 256, 'white', 4.7, '2025-03-01 10:00:00', '2025-03-01 10:00:00'),
     ('iPhone 15 Plus 512GB', 28790000, '49.jpg', 'Mô tả chi tiết (bổ sung sau)', 100, 'Apple', 6, 512, 'white', 4.7, '2025-03-01 10:00:00', '2025-03-01 10:00:00'),
