@@ -19,10 +19,9 @@ public class PaymentController {
 
     @PostMapping("/submitOrder")
     public ResponseEntity<ApiResponse<PaymentResponse>> submitOrder(
-            @RequestBody AddressRequest addressRequest,
-            HttpServletRequest request
+            @RequestBody AddressRequest addressRequest
     ) {
-        String baseUrl = request.getScheme() + "://" + request.getServerName() + ":" + request.getServerPort();
+        String baseUrl = "http://127.0.0.1:5500/frontend/html";
         return ResponseEntity.ok(ApiResponse.success(
                 "Processing payment",
                 paymentService.handlePayment(baseUrl, addressRequest)
