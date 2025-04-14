@@ -188,6 +188,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 /* ---------------product--------------- */
 .product-list {
     margin: 0 auto;
+    margin-top: 30px;
     width: 80%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -459,6 +460,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 .information {
     width: 80%;
     margin: auto;
+    margin-top: 50px;
 }
 .product-title {
     background-color: #f8d7da;
@@ -471,8 +473,12 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     justify-content: center;
     margin-top: 30px;
 }
+.product-details left {
+    width: 50%;
+}
 .product-details img {
-    margin-left: 30px;
+    width: 300px;
+    margin-right: 100px;
 }
 .price {
     margin-top: 20px;
@@ -667,6 +673,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 /* --------------------------------------orders------------------------------- */
 main {
     margin: auto;
+    margin-top: 30px;
     width: 80%;
     padding: 20px;
 }
@@ -677,6 +684,21 @@ main {
     margin-bottom: 20px;
     background-color: #f9f9f9;
 }
+.order p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.order strong {
+    font-weight: bold;
+    color: #000;
+}
+.order-details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
 .review-button {
     background-color: #ff4d4d;
     color: white;
@@ -685,6 +707,7 @@ main {
     border-radius: 5px;
     cursor: pointer;
     margin-top: 10px;
+    margin-left: 45%;
 }
 .review-button:hover {
     background-color: #e60000;

@@ -18,84 +18,17 @@
                 <li><input type="text" placeholder="Bạn muốn tìm"><img src="../images/search.png" alt="search", width="15"></li>
                 <li><a href="cart.html"><img src="../images/store.png" alt="store", width="50">Giỏ hàng</a></li>
                 <li><a href=""><img src="../images/danhgia.png" alt="store", width="50">Rating</a></li>
-                <li><a href=""><img src="../images/order.png" alt="order", width="50">Đơn hàng</a></li>
+                <li><a href="orders.html"><img src="../images/order.png" alt="order", width="50">Đơn hàng</a></li>
                 <li><a href="account.html"><img src="../images/user.png" alt="user", width="50">Tài khoản</a></li>
                 <li><a href="./login.html"><img src="../images/logout.png" alt="logout", width="50">Đăng xuất</a></li>
             </ul>
         </div>
     </nav>
 
-    <main class="orders">
-        <div class="order">
-            <p><strong>Mã đơn:</strong> 01</p>
-            <p><strong>Trạng thái thanh toán:</strong> Thành công</p>
-            <p><strong>Số lượng sản phẩm:</strong> 2</p>
-            <p><strong>Giá trị đơn hàng:</strong> 50.000.000đ</p>
-            <p><strong>Thời gian thanh toán:</strong> .......</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Giá sản phẩm</th>
-                        <th>Số lượng</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Samsung Galaxy</td>
-                        <td>30.000.000 đ</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>iPhone</td>
-                        <td>20.000.000 đ</td>
-                        <td>1</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <button class="review-button">Đánh giá</button>
-        </div>
-
-        <div class="order">
-            <p><strong>Mã đơn:</strong> 02</p>
-            <p><strong>Trạng thái thanh toán:</strong> Thành công</p>
-            <p><strong>Số lượng sản phẩm:</strong> 2</p>
-            <p><strong>Giá trị đơn hàng:</strong> 50.000.000đ</p>
-            <p><strong>Thời gian thanh toán:</strong> .......</p>
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>STT</th>
-                        <th>Tên sản phẩm</th>
-                        <th>Giá sản phẩm</th>
-                        <th>Số lượng</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Samsung Galaxy</td>
-                        <td>30.000.000 đ</td>
-                        <td>1</td>
-                    </tr>
-                    <tr>
-                        <td>2</td>
-                        <td>iPhone</td>
-                        <td>20.000.000 đ</td>
-                        <td>1</td>
-                    </tr>
-                </tbody>
-            </table>
-
-            <button class="review-button">Đánh giá</button>
-        </div>
+    <main class="orders" id="orders-container">
+        <!-- Đơn hàng sẽ được hiển thị tại đây -->
     </main>
 
+    <script src="../js/orders.js"></script>
 </body>
 </html>
