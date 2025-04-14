@@ -14,7 +14,7 @@ public class OrderHistoryDTO {
     private String orderCode;
     private LocalDateTime orderDate;
     private BigDecimal totalPrice;
-//    private int numProducts;
+    private int numProduct;
     private PaymentStatus status;
     private String address;
     private String phoneNumber;
@@ -32,6 +32,15 @@ public class OrderHistoryDTO {
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.orderItemDTOList = new ArrayList<>();
+    }
+
+    public void setOrderItemDTOList(List<OrderItemDTO> orderItemDTOList) {
+        this.orderItemDTOList = orderItemDTOList;
+        int numProduct = 0;
+        for (OrderItemDTO orderItemDTO : orderItemDTOList) {
+            numProduct += orderItemDTO.getQuantity();
+        }
+        this.numProduct = numProduct;
     }
 
 }
