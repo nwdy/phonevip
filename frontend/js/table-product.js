@@ -166,7 +166,7 @@ async function deleteProduct(id) {
     const confirmDelete = confirm("Bạn có chắc chắn muốn xóa sản phẩm này?");
     if (!confirmDelete) return;
 
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("token");
     try {
         const response = await fetch(`http://localhost:8080/products/${id}`, {
             method: 'DELETE',

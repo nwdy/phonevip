@@ -10,7 +10,7 @@ function handleCancel() {
 document.getElementById("addProductForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const token = localStorage.getItem("accessToken");
+    const token = localStorage.getItem("token");
 
     // Lấy dữ liệu từ form
     const name = document.getElementById("productName").value;
