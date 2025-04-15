@@ -18,7 +18,6 @@
                     <li><a href="index.html"><img src="../images/home.png" alt="home", width="50">Trang chủ</a></li>
                     <li><input type="text" placeholder="Bạn muốn tìm"><img src="../images/search.png" alt="search", width="15"></li>
                     <li><a href="cart.html"><img src="../images/store.png" alt="store", width="50">Giỏ hàng</a></li>
-                    <li><a href=""><img src="../images/danhgia.png" alt="store", width="50">Rating</a></li>
                     <li><a href="orders.html"><img src="../images/order.png" alt="order", width="50">Đơn hàng</a></li>
                     <li><a href="account.html"><img src="../images/user.png" alt="user", width="50">Tài khoản</a></li>
                     <li><a href="./login.html"><img src="../images/logout.png" alt="logout", width="50">Đăng xuất</a></li>
@@ -40,14 +39,23 @@
     
         <div class="filter">
             <ul>
-                <li><a href="">Hãng điện thoại<img src="../images/filter.png" alt="filter", width="25"></a><button>Tất cả</button></li>
-                <li><a href="">Mức giá<img src="../images/filter.png" alt="filter", width="25"></a><button>Tất cả</button></li>
+                <li>
+                    <span>Hãng điện thoại:</span>
+                    <select id="manufacturer-filter" onchange="filterByManufacturer()">
+                        <option value="">Tất cả</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Iphone">Iphone</option>
+                        <option value="OPPO">OPPO</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                        <option value="Realme">Realme</option>
+                    </select>
+                </li>
+                <li>
+                    <span>Mức giá:</span>
+                    <button>Tất cả</button>
+                </li>
             </ul>
         </div>
-
-        <!-- <div class="chatbot">
-            <a href=""><img src="../images/chatbot.png" alt="chatbot", width="75"></a>
-        </div> -->
 
         <div class="product-list" id="product-list"></div>
 
