@@ -495,6 +495,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     margin-top: 20px;
     background-color: #f8d7da;
     border: none;
+    border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
     margin-left: 10px;
@@ -509,6 +510,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     background-color: #ff4d4d;
     color: white;
     border: none;
+    border-radius: 5px;
     padding: 10px;
     margin-bottom: 150px;
     margin-top: 20px;
@@ -519,6 +521,53 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     background-color: #f8d7da;
     padding: 20px;
     margin-top: 20px;
+}
+/* Định dạng cho phần đánh giá sản phẩm */
+.product-reviews {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.product-reviews h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.review-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-item p {
+    margin: 5px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.review-item strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.review-item .review-rating {
+    font-size: 15px;
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.review-item .review-date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
 }
 
 /* ----------------------------------cart-------------------------------- */
@@ -769,7 +818,7 @@ textarea {
     resize: none;
     margin-top: 10px;
 }
-.submit-button {
+.submit-rating-button {
     background-color: #ff4d4d;
     color: white;
     border: none;
@@ -779,6 +828,6 @@ textarea {
     display: block;
     margin: 0 auto;
 }
-.submit-button:hover {
+.submit-rating-button:hover {
     background-color: #e60000;
 }

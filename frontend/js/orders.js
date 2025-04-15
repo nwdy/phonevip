@@ -1,4 +1,3 @@
-// Hàm lấy token
 async function fetchToken() {
     try {
         const response = await fetch("http://localhost:8080/token", {
@@ -50,7 +49,7 @@ async function fetchOrderHistory() {
 
         console.log(apiResponse);
 
-        displayOrders(orders); // Hiển thị danh sách đơn hàng
+        displayOrders(orders);
     } catch (error) {
         console.error('Lỗi khi tải lịch sử đơn hàng:', error);
         document.getElementById('orders-container').innerHTML = '<p>Lỗi khi tải lịch sử đơn hàng. Vui lòng thử lại sau.</p>';
@@ -60,12 +59,12 @@ async function fetchOrderHistory() {
 // Hàm hiển thị danh sách đơn hàng
 async function displayOrders(orders) {
     const ordersContainer = document.getElementById('orders-container');
-    ordersContainer.innerHTML = ''; // Xóa nội dung cũ
+    ordersContainer.innerHTML = '';
 
     for (const order of orders) {
         const orderElement = document.createElement('div');
         orderElement.classList.add('order');
-        orderElement.setAttribute('data-order-id', order.orderId); // Thêm thuộc tính để xác định đơn hàng
+        orderElement.setAttribute('data-order-id', order.orderId);
         orderElement.innerHTML = `
             <p><strong>Mã đơn:</strong> ${order.orderCode}</p>
             <p><strong>Trạng thái thanh toán:</strong> ${order.status}</p>
@@ -75,10 +74,8 @@ async function displayOrders(orders) {
             <p><strong>Thời gian đặt hàng:</strong> ${new Date(order.orderDate).toLocaleString()}</p>
         `;
 
-        // Gọi API để lấy chi tiết đơn hàng
         const orderDetails = await fetchOrderDetails(order.orderId);
 
-        // Nếu có chi tiết đơn hàng, hiển thị bên dưới
         if (orderDetails) {
             const detailsElement = document.createElement('div');
             detailsElement.classList.add('order-details');
@@ -107,7 +104,6 @@ async function displayOrders(orders) {
             orderElement.appendChild(detailsElement);
         }
 
-        // Thêm nút "Đánh giá" nếu trạng thái đơn hàng là "Thành công"
         if (order.status === 'COMPLETED') {
             const reviewButton = document.createElement('button');
             reviewButton.classList.add('review-button');
@@ -148,12 +144,11 @@ async function fetchOrderDetails(orderId) {
         }
 
         const apiResponse = await response.json();
-        return apiResponse.data; // Trả về danh sách sản phẩm
+        return apiResponse.data;
     } catch (error) {
         console.error('Lỗi khi tải chi tiết đơn hàng:', error);
         return null;
     }
 }
 
-// Gọi API để tải lịch sử đơn hàng khi trang được tải
 fetchOrderHistory();
