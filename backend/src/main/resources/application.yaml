@@ -2,10 +2,13 @@ spring:
   application:
     name: phonevip-backend
 
+  config:
+    import: classpath:secrets.properties
+
   datasource:
     url: jdbc:postgresql://localhost:5432/phonevip
-    username: postgres
-    password: 12345678
+    username: ${db.username}
+    password: ${db.password}
 
   jpa:
     hibernate:

@@ -68,6 +68,8 @@ public class SecurityConfig {
                 .authorizeHttpRequests((req) -> req
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
                         .requestMatchers(HttpMethod.GET, "/products/**").permitAll()
+//                        .requestMatchers(HttpMethod.GET, "/vnpay-payment").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/ipn").permitAll()
 //                        .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .exceptionHandling(exception -> exception

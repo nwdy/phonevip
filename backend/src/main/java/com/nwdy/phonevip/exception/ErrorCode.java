@@ -28,6 +28,7 @@ public enum ErrorCode {
     USERNAME_ALREADY_EXISTS(1110, "Username already exists", HttpStatus.BAD_REQUEST),
     EMAIL_ALREADY_EXISTS(1111, "Email already exists", HttpStatus.BAD_REQUEST),
     PRODUCT_ALREADY_EXISTS(1112, "Product already exists", HttpStatus.BAD_REQUEST),
+    REVIEW_ALREADY_EXISTS(1113, "Product review already exists", HttpStatus.BAD_REQUEST),
 
     // Unauthenticated (12xx)
     AUTHENTICATION_FAILED(1200, "Authentication failed", HttpStatus.UNAUTHORIZED),
