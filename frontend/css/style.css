@@ -11,6 +11,28 @@ a {
     text-decoration: none;
 }
 
+table {
+    
+    margin: auto;
+    width: 80%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+table th, table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+}
+
+table tr {
+    display: table-row;
+}
+
 /* ---------------------------------------------------index-------------------------------------------- */
 header {
     background-color: white;
@@ -83,8 +105,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 
 /* ---------------ads-------------- */
 .ads {
-    position: relative;
-    top: 100px;
+    margin-top: 50px;
     width: 100%;
     display: flex;
     justify-content: center;
@@ -93,33 +114,57 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     width: 70%;
 }
 
-/* --------------filter-------------- */
-.filter-button , .filter{
+/* --------------sort-------------- */
+.filter-button {
     display: flex;
-    width: 60%;
+    margin-top: 50px;
+    margin-left: 200px;
+    gap: 15px;
+}
+.filter-button ul {
+    display: flex;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+.filter-button ul li button {
+    color: #333;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+.filter-button ul li button:hover {
+    background-color: #ff4d4d;
+    color: white;
+    border-color: #ff4d4d;
+    transform: translateY(-2px);
+}
+.filter-button ul li button.active {
+    background-color: #ff4d4d;
+    color: white;
+    font-weight: bold;
+    border-color: #ff4d4d;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* --------------filter-------------- */
+.filter{
+    margin-top: 30px;
+    margin-left: 200px;
     height: auto;
 }
-.filter-button ul, .filter ul {
+.filter ul {
     margin: auto;
     display: flex;
     align-items: center;
-    width: 50%;
     position: relative;
-    top: 140px;
     gap: 30px;
-}
-.filter-button ul li button {
-    color: rgb(128, 128, 128);
-    background-color: rgb(238, 237, 237);
-    font-size: 14px;
-    padding: 10px 30px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-.filter ul {
-    position: relative;
-    top: 170px;
 }
 .filter ul li button {
     position: relative;
@@ -142,20 +187,87 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 
 /* ---------------product--------------- */
 .product-list {
-    padding: 150px;
+    margin: 0 auto;
+    margin-top: 30px;
+    width: 80%;
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 20px;
 }
 .product {
     border: 1px solid #ddd;
-    padding: 10px;
-    width: 200px;
+    border-radius: 10px;
+    padding: 15px;
+    width: 100%;
     text-align: center;
+    background-color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Hiệu ứng đổ bóng */
+    transition: transform 0.3s ease, box-shadow 0.3s ease; /* Hiệu ứng khi hover */
+}
+.product:hover {
+    transform: translateY(-5px); /* Nâng sản phẩm lên khi hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Tăng hiệu ứng đổ bóng khi hover */
 }
 .product img {
     width: 100%;
-    height: auto;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+.product-info {
+    padding: 10px 0;
+}
+.product-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+.product-price {
+    font-size: 20px;
+    color: #ff4d4d;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.product-rating {
+    font-size: 16px;
+    color: #888;
+}
+
+/* -----------------page-------------------- */
+.pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    gap: 10px;
+}
+.pagination button {
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    background-color: #ffffff;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: all 0.3s ease;
+    color: #333;
+}
+.pagination button.active {
+    background-color: #ff4d4d;
+    color: white;
+    font-weight: bold;
+    border-color: #ff4d4d;
+}
+.pagination button:hover:not(.active) {
+    background-color: #e60000;
+    color: white;
+}
+.pagination button:disabled {
+    background-color: #f2f2f2;
+    color: #aaa;
+    cursor: not-allowed;
+    border-color: #ddd;
 }
 
 /* -----------------------------------------login--------------------------------- */
@@ -206,7 +318,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     width: 100%;
     margin-top: 5px;
     padding: 10px;
-    background: red;
+    background: #ff4d4d;
     color: white;
     border: none;
     border-radius: 10px;
@@ -251,7 +363,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 .register button {
     width: 100%;
     padding: 10px;
-    background: red;
+    background: #ff4d4d;
     color: white;
     border: none;
     border-radius: 10px;
@@ -303,7 +415,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     padding: 5px 10px;
     width: auto;
     height: auto;
-    background-color: red;
+    background-color: #ff4d4d;
     color: white;
     border: none;
     border-radius: 10px;
@@ -337,7 +449,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     padding: 5px 10px;
     width: auto;
     height: auto;
-    background-color: red;
+    background-color: #ff4d4d;
     color: white;
     border: none;
     border-radius: 10px;
@@ -348,6 +460,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 .information {
     width: 80%;
     margin: auto;
+    margin-top: 50px;
 }
 .product-title {
     background-color: #f8d7da;
@@ -360,8 +473,12 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     justify-content: center;
     margin-top: 30px;
 }
+.product-details left {
+    width: 50%;
+}
 .product-details img {
-    margin-left: 30px;
+    width: 300px;
+    margin-right: 100px;
 }
 .price {
     margin-top: 20px;
@@ -378,6 +495,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     margin-top: 20px;
     background-color: #f8d7da;
     border: none;
+    border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
     margin-left: 10px;
@@ -389,9 +507,10 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 }
 
 .buy-button button {
-    background-color: red;
+    background-color: #ff4d4d;
     color: white;
     border: none;
+    border-radius: 5px;
     padding: 10px;
     margin-bottom: 150px;
     margin-top: 20px;
@@ -402,6 +521,53 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     background-color: #f8d7da;
     padding: 20px;
     margin-top: 20px;
+}
+/* Định dạng cho phần đánh giá sản phẩm */
+.product-reviews {
+    width: 80%;
+    margin: auto;
+    margin-top: 30px;
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.product-reviews h3 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+.review-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.review-item p {
+    margin: 5px 0;
+    font-size: 20px;
+    color: #333;
+}
+
+.review-item strong {
+    font-weight: bold;
+    color: #000;
+}
+
+.review-item .review-rating {
+    font-size: 15px;
+    color: #ff4d4d;
+    font-weight: bold;
+}
+
+.review-item .review-date {
+    font-size: 14px;
+    color: #888;
+    margin-bottom: 10px;
 }
 
 /* ----------------------------------cart-------------------------------- */
@@ -450,7 +616,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     cursor: pointer;
 }
 .buy-now button {
-    background-color: red;
+    background-color: #ff4d4d;
     color: white;
     border: none;
     border-radius: 10px;
@@ -466,9 +632,8 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     margin-top: 30px;
     margin-left: 150px;
 }
-.payment-table table {
-    width: 100%;
-    display: flex;
+/* .payment-table table {
+    width: 80%;
     justify-content: center;
     border-collapse: collapse;
     margin-top: 20px;
@@ -477,7 +642,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     border: 1px solid black;
     padding: 30px;
     text-align: center;
-}
+} */
 .payment-action {
     display: flex;
     justify-content: space-between;
@@ -503,7 +668,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     padding: 5px 10px;
     width: auto;
     height: auto;
-    background-color: red;
+    background-color: #ff4d4d;
     color: white;
     border: none;
     border-radius: 10px;
@@ -544,7 +709,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     padding: 5px 10px;
     width: auto;
     height: auto;
-    background-color: red;
+    background-color: #ff4d4d;
     color: white;
     border: none;
     border-radius: 10px;
@@ -552,4 +717,117 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 }
 .return-button button a {
     color: white;
+}
+
+/* --------------------------------------orders------------------------------- */
+main {
+    margin: auto;
+    margin-top: 30px;
+    width: 80%;
+    padding: 20px;
+}
+.order {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+}
+.order p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #333;
+}
+
+.order strong {
+    font-weight: bold;
+    color: #000;
+}
+.order-details table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+.review-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+    margin-left: 45%;
+}
+.review-button:hover {
+    background-color: #e60000;
+}
+
+/* ------------------------------------rating------------------------------- */
+.rating-page {
+    padding: 20px;
+}
+.rating-page h1 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+.rating-page p {
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+.back-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-bottom: 20px;
+}
+.back-button:hover {
+    background-color: #e60000;
+}
+.rating-item {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    gap: 15px;
+}
+.product-image {
+    width: 120px;
+    height: auto;
+    object-fit: cover;
+    margin-right: 15px;
+}
+.product-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    margin-top: 10px;
+}
+.submit-rating-button {
+    background-color: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 0 auto;
+}
+.submit-rating-button:hover {
+    background-color: #e60000;
 }

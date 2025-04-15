@@ -18,8 +18,7 @@
                     <li><a href="index.html"><img src="../images/home.png" alt="home", width="50">Trang chủ</a></li>
                     <li><input type="text" placeholder="Bạn muốn tìm"><img src="../images/search.png" alt="search", width="15"></li>
                     <li><a href="cart.html"><img src="../images/store.png" alt="store", width="50">Giỏ hàng</a></li>
-                    <li><a href=""><img src="../images/danhgia.png" alt="store", width="50">Rating</a></li>
-                    <li><a href=""><img src="../images/order.png" alt="order", width="50">Đơn hàng</a></li>
+                    <li><a href="orders.html"><img src="../images/order.png" alt="order", width="50">Đơn hàng</a></li>
                     <li><a href="account.html"><img src="../images/user.png" alt="user", width="50">Tài khoản</a></li>
                     <li><a href="./login.html"><img src="../images/logout.png" alt="logout", width="50">Đăng xuất</a></li>
                 </ul>
@@ -32,25 +31,56 @@
         
         <div class="filter-button">
             <ul>
-                <li><a href=""><button>Giá giảm dần</button></a></li>
-                <li><a href=""><button>Giá tăng dần</button></a></li>
-                <li><a href=""><button>Rating</button></a></li>
+                <li><button onclick="filterProducts('price,desc')">Giá giảm dần</button></li>
+                <li><button onclick="filterProducts('price,asc')">Giá tăng dần</button></li>
+                <li><button onclick="filterProducts('rating,desc')">Rating</button></li>
             </ul>
         </div>
     
         <div class="filter">
             <ul>
-                <li><a href="">Hãng điện thoại<img src="../images/filter.png" alt="filter", width="25"></a><button>Tất cả</button></li>
-                <li><a href="">Mức giá<img src="../images/filter.png" alt="filter", width="25"></a><button>Tất cả</button></li>
+                <li>
+                    <span>Hãng điện thoại:</span>
+                    <select id="manufacturer-filter" onchange="filterByManufacturer()">
+                        <option value="">Tất cả</option>
+                        <option value="Samsung">Samsung</option>
+                        <option value="Iphone">Iphone</option>
+                        <option value="OPPO">OPPO</option>
+                        <option value="Xiaomi">Xiaomi</option>
+                        <option value="Realme">Realme</option>
+                    </select>
+                </li>
+                <li>
+                    <span>Mức giá:</span>
+                    <button>Tất cả</button>
+                </li>
             </ul>
         </div>
 
-        <div class="chatbot">
-            <a href=""><img src="../images/chatbot.png" alt="chatbot"></a>
-        </div>
-
         <div class="product-list" id="product-list"></div>
+
+        <div class="pagination">
+            <button id="prev-button" onclick="changePage(-1)">Trang trước đó</button>
+            <button id="next-button" onclick="changePage(1)">Trang tiếp theo</button>
+        </div>
     </div>
     <script src="../js/product-list.js"></script>
+
+    <script type="text/javascript">
+        (function(d, t) {
+            var v = d.createElement(t), s = d.getElementsByTagName(t)[0];
+            v.onload = function() {
+              window.voiceflow.chat.load({
+                verify: { projectID: '67f92cf45c02abbb3caec971' },
+                url: 'https://general-runtime.voiceflow.com',
+                versionID: 'production',
+                voice: {
+                  url: "https://runtime-api.voiceflow.com"
+                }
+              });
+            }
+            v.src = "https://cdn.voiceflow.com/widget-next/bundle.mjs"; v.type = "text/javascript"; s.parentNode.insertBefore(v, s);
+        })(document, 'script');
+      </script>
 </body>
 </html>
