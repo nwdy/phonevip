@@ -39,7 +39,10 @@ async function login() {
                 roles = payload.scp.replace("[", "").replace("]", "").split(",").map(r => r.trim());
             }
 
-            if (roles.includes("ROLE_ADMIN")) {
+            if (roles.length > 1) {
+                // Nếu có nhiều vai trò, hiển thị cửa sổ chọn vai trò
+                showRoleSelection(roles, token);
+            } else if (roles.includes("ROLE_ADMIN")) {
                 alert("ADMIN Đăng nhập thành công!");
                 window.location.href = "adminManageProduct.html";
             } else if (roles.includes("ROLE_USER")) {
@@ -55,4 +58,41 @@ async function login() {
     }
 
     loginButton.disabled = false;
+}
+
+function showRoleSelection(roles, token) {
+    const roleSelectionModal = document.createElement("div");
+    roleSelectionModal.className = "role-selection-modal";
+    roleSelectionModal.innerHTML = `
+        <div class="modal-content">
+            <h3>Chọn vai trò để đăng nhập</h3>
+            ${roles
+                .map(role => {
+                    const roleName = role === "ROLE_ADMIN" ? "Quản trị viên" : "Người dùng";
+                    return `<button onclick="handleRoleSelection('${role}', '${token}')">${roleName}</button>`;
+                })
+                .join("")}
+            <button class="cancel-button" onclick="closeRoleSelection()">Hủy</button>
+        </div>
+    `;
+    document.body.appendChild(roleSelectionModal);
+}
+
+// Hàm đóng cửa sổ chọn vai trò
+function closeRoleSelection() {
+    const modal = document.querySelector(".role-selection-modal");
+    if (modal) {
+        modal.remove();
+    }
+}
+// Hàm xử lý khi người dùng chọn vai trò
+function handleRoleSelection(role, token) {
+    if (role === "ROLE_ADMIN") {
+        alert("ADMIN Đăng nhập thành công!");
+        window.location.href = "adminManageProduct.html";
+    } else if (role === "ROLE_USER") {
+        alert("USER Đăng nhập thành công!");
+        window.location.href = "index.html";
+    }
+    localStorage.setItem("token", token); // Lưu token vào localStorage
 }

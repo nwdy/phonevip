@@ -1,6 +1,6 @@
-let currentPage = 0; // Trang hiện tại
-const pageSize = 10; // Số sản phẩm trên mỗi trang
-let currentSort = ''; // Trạng thái sắp xếp hiện tại
+let currentPage = 0;
+const pageSize = 10;
+let currentSort = '';
 
 async function fetchProducts(page = 0, size = 10, sort = '') {
     try {
@@ -18,8 +18,8 @@ async function fetchProducts(page = 0, size = 10, sort = '') {
         const apiResponse = await response.json();
         const products = apiResponse.data;
 
-        displayProducts(products); // Hiển thị danh sách sản phẩm
-        updatePaginationButtons(apiResponse.totalPages); // Cập nhật phân trang
+        displayProducts(products);
+        updatePaginationButtons(apiResponse.totalPages);
     } catch (error) {
         console.error('Lỗi khi tải sản phẩm:', error);
         document.getElementById('product-list').innerHTML = '<p>Lỗi khi tải sản phẩm. Vui lòng thử lại sau.</p>';
@@ -63,12 +63,10 @@ function updatePaginationButtons(totalPages) {
     nextButton.disabled = currentPage >= totalPages - 1;
 }
 
-// Hàm xử lý sắp xếp
 function filterProducts(sortCriteria) {
-    currentSort = sortCriteria; // Cập nhật trạng thái sắp xếp
-    currentPage = 0; // Reset về trang đầu tiên
+    currentSort = sortCriteria;
+    currentPage = 0;
     fetchProducts(currentPage, pageSize, currentSort); // Gọi API với sắp xếp mới
 }
 
-// Gọi API lần đầu
 fetchProducts(currentPage, pageSize);

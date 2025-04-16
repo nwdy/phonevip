@@ -11,7 +11,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     const apiUrl = `http://localhost:8080/products/${productId}`;
 
     try {
-        // Gọi API để lấy thông tin chi tiết sản phẩm
         const response = await fetch(apiUrl, {
             method: "GET",
             headers: {
@@ -26,10 +25,8 @@ document.addEventListener("DOMContentLoaded", async function () {
         const data = await response.json();
         const product = data.data;
 
-        // Hiển thị thông tin sản phẩm
         displayProductDetails(product);
 
-        // Hiển thị danh sách đánh giá
         displayProductReviews(product.reviews);
     } catch (error) {
         console.error("Lỗi khi tải chi tiết sản phẩm:", error);

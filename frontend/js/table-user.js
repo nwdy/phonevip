@@ -63,7 +63,7 @@ async function deleteuser(id) {
 
         if (response.ok) {
             alert("Xóa user thành công!");
-            fetchUser(); // Cập nhật lại danh sách
+            fetchUser();
         } else {
             const errorData = await response.json();
             alert("Lỗi khi xóa user: " + errorData.message);

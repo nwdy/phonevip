@@ -105,7 +105,7 @@ async function submitSingleRating(orderItemId) {
 
         alert(`Đánh giá cho sản phẩm ${orderItemId} đã được gửi thành công!`);
 
-        // Xóa phần tử đánh giá của sản phẩm khỏi giao diện
+        // Xóa sản phẩm đã đánh giá khỏi giao diện
         const ratingItem = document.querySelector(`.rating-item .submit-rating-button[data-order-item-id="${orderItemId}"]`).closest('.rating-item');
         if (ratingItem) {
             ratingItem.remove();
