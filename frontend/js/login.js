@@ -28,7 +28,7 @@ async function login() {
             const token = data.data.token;
 
             // Lưu token vào localStorage
-            localStorage.setItem("accessToken", token);
+            localStorage.setItem("token", token);
 
             // Giải mã phần payload của JWT để lấy vai trò
             const payload = JSON.parse(atob(token.split('.')[1]));
