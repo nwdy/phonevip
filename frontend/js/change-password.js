@@ -20,17 +20,11 @@ async function fetchToken() {
 
 document.getElementById("change-password-button").addEventListener("click", async function () {
     const oldPassword = document.getElementById("old-password").value;
-    const confirmOldPassword = document.getElementById("confirm-old-password").value;
     const newPassword = document.getElementById("new-password").value;
     const token = localStorage.getItem("token");
 
-    if (!oldPassword || !confirmOldPassword || !newPassword) {
+    if (!oldPassword || !newPassword) {
         alert("Vui lòng nhập đầy đủ thông tin!");
-        return;
-    }
-
-    if (oldPassword !== confirmOldPassword) {
-        alert("Mật khẩu cũ không khớp, vui lòng kiểm tra lại!");
         return;
     }
 

@@ -162,10 +162,11 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     position: relative;
     gap: 30px;
 }
-.filter ul li button, select {
+.filter ul li button {
     position: relative;
     left: 10px;
     background-color: rgb(255, 255, 255);
+    border-color: #b0b0b0;
     border-radius: 5px;
     padding: 8px 15px;
     font-size: 15px;    
@@ -596,7 +597,6 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
 .cart {
     width: 80%;
     margin: auto;
-    margin-top: 50px;
 }
 .cart-title {
     font-weight: bold;
@@ -842,16 +842,4 @@ textarea {
 }
 .submit-rating-button:hover {
     background-color: #e60000;
-}
-
-/* --------------------------------------footer------------------------------------ */
-footer {
-    text-align: center;
-    margin-top: 30px;
-    background-color: white;
-    width: 100%;
-}
-
-footer img {
-    width: 100%;
 }

@@ -49,21 +49,24 @@ function displayProducts(products) {
 
 function changePage(direction) {
     currentPage += direction; // Tăng hoặc giảm trang hiện tại
-    fetchProducts(currentPage, pageSize, currentSort);
+    fetchProducts(currentPage, pageSize, currentSort); // Gọi API với trang mới
 }
 
 function updatePaginationButtons(totalPages) {
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
 
+    // Vô hiệu hóa nút "Trước" nếu đang ở trang đầu tiên
     prevButton.disabled = currentPage === 0;
+
+    // Vô hiệu hóa nút "Sau" nếu đang ở trang cuối cùng
     nextButton.disabled = currentPage >= totalPages - 1;
 }
 
 function filterProducts(sortCriteria) {
     currentSort = sortCriteria;
     currentPage = 0;
-    fetchProducts(currentPage, pageSize, currentSort);
+    fetchProducts(currentPage, pageSize, currentSort); // Gọi API với sắp xếp mới
 }
 
 fetchProducts(currentPage, pageSize);

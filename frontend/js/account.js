@@ -56,7 +56,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     }
 });
 
-// Hàm thay đổi thông tin
 document.getElementById("save-button").addEventListener("click", async function () {
     const name = document.getElementById("name").value;
     const username = document.getElementById("username").textContent.trim();
