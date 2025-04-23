@@ -21,7 +21,7 @@ public class PaymentController {
     public ResponseEntity<ApiResponse<PaymentResponse>> submitOrder(
             @RequestBody AddressRequest addressRequest
     ) {
-        String baseUrl = "http://127.0.0.1:5500/frontend/html";
+        String baseUrl = "http://localhost";
         return ResponseEntity.ok(ApiResponse.success(
                 "Processing payment",
                 paymentService.handlePayment(baseUrl, addressRequest)
