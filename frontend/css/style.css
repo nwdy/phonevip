@@ -427,7 +427,7 @@ nav ul li:nth-child(3), nav ul li:nth-child(4), nav ul li:nth-child(5), nav ul l
     justify-items: center;
     align-items: center;
 }
-.avatar .shadow-avatar {
+.avatar .shadow-avatar img {
     display: flex;
     width: 400px;
     height: 400px;
