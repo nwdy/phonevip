@@ -47,26 +47,63 @@ function displayProducts(products) {
     });
 }
 
+// async function searchProducts() {
+//     const searchInput = document.getElementById('search-input').value.trim();
+
+//     if (!searchInput) {
+//         alert('Vui lòng nhập từ khóa để tìm kiếm!');
+//         return;
+//     }
+
+//     // Ẩn phần quảng cáo
+//     const adsElement = document.querySelector('.ads');
+//     if (adsElement) {
+//         adsElement.style.display = 'none';
+//     }
+
+//     try {
+//         const response = await fetch(`http://localhost:8080/products/search?key=${encodeURIComponent(searchInput)}`, {
+//             method: 'GET',
+//             headers: {
+//                 'Content-Type': 'application/json'
+//             }
+//         });
+
+//         if (!response.ok) {
+//             throw new Error(`HTTP error! Status: ${response.status}`);
+//         }
+
+//         const apiResponse = await response.json();
+//         const products = apiResponse.data;
+
+//         if (products.length === 0) {
+//             document.getElementById('product-list').innerHTML = '<p>Không tìm thấy sản phẩm nào phù hợp.</p>';
+//         } else {
+//             displayProducts(products);
+//         }
+//     } catch (error) {
+//         console.error('Lỗi khi tìm kiếm sản phẩm:', error);
+//         document.getElementById('product-list').innerHTML = '<p>Lỗi khi tìm kiếm sản phẩm. Vui lòng thử lại sau.</p>';
+//     }
+// }
+
 function changePage(direction) {
     currentPage += direction; // Tăng hoặc giảm trang hiện tại
-    fetchProducts(currentPage, pageSize, currentSort); // Gọi API với trang mới
+    fetchProducts(currentPage, pageSize, currentSort);
 }
 
 function updatePaginationButtons(totalPages) {
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
 
-    // Vô hiệu hóa nút "Trước" nếu đang ở trang đầu tiên
     prevButton.disabled = currentPage === 0;
-
-    // Vô hiệu hóa nút "Sau" nếu đang ở trang cuối cùng
     nextButton.disabled = currentPage >= totalPages - 1;
 }
 
 function filterProducts(sortCriteria) {
     currentSort = sortCriteria;
     currentPage = 0;
-    fetchProducts(currentPage, pageSize, currentSort); // Gọi API với sắp xếp mới
+    fetchProducts(currentPage, pageSize, currentSort);
 }
 
 fetchProducts(currentPage, pageSize);

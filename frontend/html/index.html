@@ -16,7 +16,7 @@
             <div class="nav-container">
                 <ul>
                     <li><a href="index.html"><img src="../images/home.png" alt="home", width="50">Trang chủ</a></li>
-                    <li><input type="text" placeholder="Bạn muốn tìm"><img src="../images/search.png" alt="search", width="15"></li>
+                    <li><input type="text" id="search-input" placeholder="Bạn muốn tìm"><img src="../images/search.png" alt="search", width="15" id="search-button" onclick="searchProducts()"></li>
                     <li><a href="cart.html"><img src="../images/store.png" alt="store", width="50">Giỏ hàng</a></li>
                     <li><a href="orders.html"><img src="../images/order.png" alt="order", width="50">Đơn hàng</a></li>
                     <li><a href="account.html"><img src="../images/user.png" alt="user", width="50">Tài khoản</a></li>
@@ -37,7 +37,7 @@
             </ul>
         </div>
     
-        <div class="filter">
+        <!-- <div class="filter">
             <ul>
                 <li>
                     <span>Hãng điện thoại:</span>
@@ -55,7 +55,7 @@
                     <button>Tất cả</button>
                 </li>
             </ul>
-        </div>
+        </div> -->
 
         <div class="product-list" id="product-list"></div>
 
@@ -64,6 +64,11 @@
             <button id="next-button" onclick="changePage(1)">Trang tiếp theo</button>
         </div>
     </div>
+
+    <footer>
+        <img src="../images/footer.png" alt="footer">
+    </footer>
+    
     <script src="../js/product-list.js"></script>
 
     <script type="text/javascript">
