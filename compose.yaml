@@ -7,6 +7,10 @@ services:
       dockerfile: Dockerfile
     ports:
       - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - phonevip_network
 
   backend:
     build:
@@ -29,7 +33,7 @@ services:
       - phonevip_network
   
   db:
-    image: "postgres:latest"
+    image: "postgres:17.4"
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 12345678
