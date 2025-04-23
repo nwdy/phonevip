@@ -30,6 +30,8 @@ public class ProductService {
 
     private final ReviewRepository reviewRepository;
 
+    private final SearchService searchService;
+
     // Get a list of products
     public List<ProductResponse> getAllProducts(int page, int size, String sort) {
 
@@ -67,6 +69,7 @@ public class ProductService {
     public ProductResponse addProduct(ProductRequest productRequest) {
         Product product = ProductMapper.INSTANCE.toProduct(productRequest);
         productRepository.save(product);
+        searchService.saveProductToElasticSearch(product);
         return ProductMapper.INSTANCE.toProductResponse(product);
     }
 
@@ -78,6 +81,7 @@ public class ProductService {
                 .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_FOUND));
         ProductMapper.INSTANCE.updateProduct(product, productRequest);
         productRepository.save(product);
+        searchService.saveProductToElasticSearch(product);
         return ProductMapper.INSTANCE.toProductResponse(product);
     }
 
@@ -86,6 +90,7 @@ public class ProductService {
     public void deleteProduct(Long id) {
         Product product = productRepository.findById(id)
                 .orElseThrow(() -> new AppException(ErrorCode.PRODUCT_NOT_FOUND));
+        searchService.deleteProductFromElasticSearch(id);
         productRepository.delete(product);
     }
 

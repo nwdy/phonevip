@@ -7,8 +7,8 @@ spring:
 
   datasource:
     url: jdbc:postgresql://localhost:5432/phonevip
-    username: ${db.username}
-    password: ${db.password}
+    username: ${POSTGRES_USERNAME}
+    password: ${POSTGRES_PASSWORD}
 
   jpa:
     hibernate:
@@ -21,3 +21,14 @@ spring:
       mode: always
 #      schema-locations: schema.sql
       data-locations: classpath:data.sql
+
+  data:
+    elasticsearch:
+      repositories:
+        enabled: true
+
+  elasticsearch:
+    uris: ${ELASTICSEARCH_URIS}
+#    uris: http://es:9200 (docker) || http://localhost:9200 (local)
+    username: ${ELASTICSEARCH_USERNAME}
+    password: ${ELASTICSEARCH_PASSWORD}
