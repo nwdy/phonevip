@@ -27,7 +27,6 @@ async function login() {
         if (response.ok && data.data && data.data.token) {
             const token = data.data.token;
 
-            // Lưu token vào localStorage
             localStorage.setItem("token", token);
 
             // Giải mã phần payload của JWT để lấy vai trò
@@ -78,14 +77,13 @@ function showRoleSelection(roles, token) {
     document.body.appendChild(roleSelectionModal);
 }
 
-// Hàm đóng cửa sổ chọn vai trò
 function closeRoleSelection() {
     const modal = document.querySelector(".role-selection-modal");
     if (modal) {
         modal.remove();
     }
 }
-// Hàm xử lý khi người dùng chọn vai trò
+
 function handleRoleSelection(role, token) {
     if (role === "ROLE_ADMIN") {
         alert("ADMIN Đăng nhập thành công!");
@@ -94,5 +92,5 @@ function handleRoleSelection(role, token) {
         alert("USER Đăng nhập thành công!");
         window.location.href = "index.html";
     }
-    localStorage.setItem("token", token); // Lưu token vào localStorage
+    localStorage.setItem("token", token);
 }
