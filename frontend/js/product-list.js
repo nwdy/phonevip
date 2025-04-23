@@ -1,10 +1,11 @@
 let currentPage = 0;
 const pageSize = 10;
 let currentSort = '';
+let searchKey = '';
 
-async function fetchProducts(page = 0, size = 10, sort = '') {
+async function fetchProducts(page = 0, size = 10, sort = '', searchKey = '') {
     try {
-        const response = await fetch(`http://localhost:8080/products?page=${page}&size=${size}&sort=${sort}`, {
+        const response = await fetch(`http://localhost:8080/search?page=${page}&size=${size}&sort=${sort}&keyword=${encodeURIComponent(searchKey)}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -47,49 +48,26 @@ function displayProducts(products) {
     });
 }
 
-// async function searchProducts() {
-//     const searchInput = document.getElementById('search-input').value.trim();
+async function searchProducts() {
+    searchKey = document.getElementById('search-input').value.trim();
 
-//     if (!searchInput) {
-//         alert('Vui lòng nhập từ khóa để tìm kiếm!');
-//         return;
-//     }
+    if (!searchKey) {
+        alert('Vui lòng nhập từ khóa để tìm kiếm!');
+        return;
+    }
 
-//     // Ẩn phần quảng cáo
-//     const adsElement = document.querySelector('.ads');
-//     if (adsElement) {
-//         adsElement.style.display = 'none';
-//     }
+    // Ẩn phần quảng cáo
+    const adsElement = document.querySelector('.ads');
+    if (adsElement) {
+        adsElement.style.display = 'none';
+    }
 
-//     try {
-//         const response = await fetch(`http://localhost:8080/products/search?key=${encodeURIComponent(searchInput)}`, {
-//             method: 'GET',
-//             headers: {
-//                 'Content-Type': 'application/json'
-//             }
-//         });
-
-//         if (!response.ok) {
-//             throw new Error(`HTTP error! Status: ${response.status}`);
-//         }
-
-//         const apiResponse = await response.json();
-//         const products = apiResponse.data;
-
-//         if (products.length === 0) {
-//             document.getElementById('product-list').innerHTML = '<p>Không tìm thấy sản phẩm nào phù hợp.</p>';
-//         } else {
-//             displayProducts(products);
-//         }
-//     } catch (error) {
-//         console.error('Lỗi khi tìm kiếm sản phẩm:', error);
-//         document.getElementById('product-list').innerHTML = '<p>Lỗi khi tìm kiếm sản phẩm. Vui lòng thử lại sau.</p>';
-//     }
-// }
+    fetchProducts(0, pageSize, currentSort, searchKey);
+}
 
 function changePage(direction) {
     currentPage += direction; // Tăng hoặc giảm trang hiện tại
-    fetchProducts(currentPage, pageSize, currentSort);
+    fetchProducts(currentPage, pageSize, currentSort, searchKey);
 }
 
 function updatePaginationButtons(totalPages) {
@@ -103,7 +81,7 @@ function updatePaginationButtons(totalPages) {
 function filterProducts(sortCriteria) {
     currentSort = sortCriteria;
     currentPage = 0;
-    fetchProducts(currentPage, pageSize, currentSort);
+    fetchProducts(currentPage, pageSize, currentSort, searchKey);
 }
 
 fetchProducts(currentPage, pageSize);
