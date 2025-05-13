@@ -49,7 +49,10 @@ async function loadCart() {
         const cart = await response.json();
         console.log(cart);
         const cartItems = cart.data.cartItems || [];
-        // const totalPrice = cart.data.totalPrice || 0;
+
+        // Sắp xếp giỏ hàng theo cartItemId
+        cartItems.sort((a, b) => a.cartItemId - b.cartItemId);
+
         const cartContainer = document.getElementById("cart-items");
         cartContainer.innerHTML = "";
         let totalPrice = 0, totalQuantity = 0;
@@ -141,10 +144,14 @@ async function updateQuantity(cartItemId, change) {
             throw new Error(`HTTP error! Status: ${response.status} - ${responseData.message || "Unknown error"}`);
         }
 
-        // const checkbox = document.querySelector(`.cart-checkbox[data-id='${cartItemId}']`);
-        // if (checkbox) checkbox.checked = true;
+        const checkbox = document.querySelector(`.cart-checkbox[data-id='${cartItemId}']`);
+        if (checkbox) checkbox.checked = true;
 
-        await loadCart();
+        // Cập nhật số lượng hiển thị
+        quantityElement.innerText = newQuantity;
+
+        // Cập nhật tổng giá trị và số lượng
+        updateTotal();
     } catch (error) {
         console.error("Lỗi khi cập nhật số lượng:", error);
     }
