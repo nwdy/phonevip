@@ -21,6 +21,8 @@ async function loadOrderDetails() {
         const apiResponse = await response.json();
         const orderItems = apiResponse.data;
 
+        console.log(orderItems);
+
         displayOrderItems(orderItems);
     } catch (error) {
         console.error('Lỗi khi tải chi tiết đơn hàng:', error);
@@ -103,7 +105,7 @@ async function submitSingleRating(orderItemId) {
             throw new Error(`HTTP error! Status: ${response.status}`);
         }
 
-        alert(`Đánh giá cho sản phẩm ${orderItemId} đã được gửi thành công!`);
+        alert(`Đánh giá cho sản phẩm đã được gửi thành công!`);
 
         // Xóa sản phẩm đã đánh giá khỏi giao diện
         const ratingItem = document.querySelector(`.rating-item .submit-rating-button[data-order-item-id="${orderItemId}"]`).closest('.rating-item');
@@ -112,7 +114,11 @@ async function submitSingleRating(orderItemId) {
         }
     } catch (error) {
         console.error(`Lỗi khi gửi đánh giá cho sản phẩm ${orderItemId}:`, error);
-        alert(`Không thể gửi đánh giá cho sản phẩm ${orderItemId}. Vui lòng thử lại sau.`);
+        if (error.message && error.message.includes('400')) {
+            alert('Bạn đã thực hiện đánh giá sản phẩm này trước đây rồi.');
+        } else {
+            alert(`Không thể gửi đánh giá cho sản phẩm ${orderItemId}. Vui lòng thử lại sau.`);
+        }
     }
 }
 
