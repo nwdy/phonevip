@@ -51,9 +51,9 @@ function displayProducts(products) {
 }
 
 async function searchProducts() {
-    const searchKey = document.getElementById('search-input').value.trim();
+    searchKey_search = document.getElementById('search-input').value.trim();
 
-    if (!searchKey) {
+    if (!searchKey_search) {
         alert('Vui lòng nhập từ khóa để tìm kiếm!');
         return;
     }
@@ -64,7 +64,7 @@ async function searchProducts() {
         adsElement.style.display = 'none';
     }
 
-    fetchProducts(0, pageSize_search, currentSort_search, searchKey);
+    fetchProducts(0, pageSize_search, currentSort_search, searchKey_search);
 }
 
 function changePage(direction) {
