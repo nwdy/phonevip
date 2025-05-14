@@ -64,7 +64,7 @@ async function searchProducts() {
         adsElement.style.display = 'none';
     }
 
-    fetchProducts(0, pageSize_search, currentSort_search, searchKey_search);
+    fetchProducts(0, pageSize_search, currentSort_search, searchKey);
 }
 
 function changePage(direction) {
