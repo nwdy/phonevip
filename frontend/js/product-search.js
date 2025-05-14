@@ -1,10 +1,11 @@
-let currentPage = 0;
-const pageSize = 10;
-let currentSort = '';
+let currentPage_search = 0;
+const pageSize_search = 10;
+let currentSort_search = '';
+let searchKey_search = '';
 
-async function fetchProducts(page = 0, size = 10, sort = '') {
+async function fetchProducts(page = 0, size = 10, sort = '', searchKey = '') {
     try {
-        const response = await fetch(`http://localhost:8080/products?page=${page}&size=${size}&sort=${sort}`, {
+        const response = await fetch(`http://localhost:8080/search?page=${page}&size=${size}&sort=${sort}&keyword=${encodeURIComponent(searchKey)}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -17,6 +18,8 @@ async function fetchProducts(page = 0, size = 10, sort = '') {
 
         const apiResponse = await response.json();
         const products = apiResponse.data;
+
+        console.log(products);
 
         displayProducts(products);
         updatePaginationButtons(apiResponse.totalPages);
@@ -47,23 +50,40 @@ function displayProducts(products) {
     });
 }
 
+async function searchProducts() {
+    const searchKey = document.getElementById('search-input').value.trim();
+
+    if (!searchKey) {
+        alert('Vui lòng nhập từ khóa để tìm kiếm!');
+        return;
+    }
+
+    // Ẩn phần quảng cáo
+    const adsElement = document.querySelector('.ads');
+    if (adsElement) {
+        adsElement.style.display = 'none';
+    }
+
+    fetchProducts(0, pageSize_search, currentSort_search, searchKey_search);
+}
+
 function changePage(direction) {
-    currentPage += direction; // Tăng hoặc giảm trang hiện tại
-    fetchProducts(currentPage, pageSize, currentSort);
+    currentPage_search += direction; // Tăng hoặc giảm trang hiện tại
+    fetchProducts(currentPage_search, pageSize_search, currentSort_search, searchKey_search);
 }
 
 function updatePaginationButtons(totalPages) {
     const prevButton = document.getElementById('prev-button');
     const nextButton = document.getElementById('next-button');
 
-    prevButton.disabled = currentPage === 0;
-    nextButton.disabled = currentPage >= totalPages - 1;
+    prevButton.disabled = currentPage_search === 0;
+    nextButton.disabled = currentPage_search >= totalPages - 1;
 }
 
 function filterProducts(sortCriteria) {
-    currentSort = sortCriteria;
-    currentPage = 0;
-    fetchProducts(currentPage, pageSize, currentSort);
+    currentSort_search = sortCriteria;
+    currentPage_search = 0;
+    fetchProducts(currentPage_search, pageSize_search, currentSort_search, searchKey_search);
 }
 
-fetchProducts(currentPage, pageSize);
+fetchProducts(currentPage_search, pageSize_search);
