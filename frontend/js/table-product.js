@@ -3,7 +3,7 @@ const pageSize = 10;
 
 async function fetchProducts(page = 0) {
     try {
-        const response = await fetch(`http://localhost:8080/products?page=${page}&size=${pageSize}`, {
+        const response = await fetch(`http://localhost:8080/products?page=${page}&size=${pageSize}&sort=id,asc`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'

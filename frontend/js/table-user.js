@@ -26,6 +26,7 @@ function displayUser(users) {
     const tableBody = document.getElementById('user-table-body');
     tableBody.innerHTML = '';
 
+    users.sort((a, b) => a.id - b.id);
     users.forEach(user => {
         if (!user.id || !user.name || !user.username || !user.email) {
             console.warn('Bỏ qua user thiếu dữ liệu:', user);
