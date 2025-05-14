@@ -52,8 +52,10 @@
     <script src="../js/product-list.js"></script>
 
     <script>
-        document.getElementById('search-input').addEventListener('focus', function () {
-            window.location.href = 'product-search.html';
+        document.getElementById('search-button').addEventListener('click', function () {
+            const searchValue = document.getElementById('search-input').value.trim();
+            // Chuyển sang product-search.html và truyền giá trị tìm kiếm qua query string
+            window.location.href = `product-search.html?key=${encodeURIComponent(searchValue)}`;
         });
     </script>
 

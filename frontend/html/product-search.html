@@ -52,10 +52,17 @@
     <script src="../js/product-search.js"></script>
 
     <script>
-    window.onload = function() {
-        document.getElementById('search-input').focus();
-    };
-</script>
+        window.onload = function() {
+            const params = new URLSearchParams(window.location.search);
+            const key = params.get('key') || '';
+            const searchInput = document.getElementById('search-input');
+            if (searchInput) {
+                searchInput.value = key;
+                searchInput.focus();
+            }
+            searchProducts();
+        };
+    </script>
 
     <script type="text/javascript">
         (function(d, t) {

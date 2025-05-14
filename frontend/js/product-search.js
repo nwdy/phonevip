@@ -5,7 +5,7 @@ let searchKey_search = '';
 
 async function fetchProducts(page = 0, size = 10, sort = '', searchKey = '') {
     try {
-        const response = await fetch(`http://localhost:8080/search?page=${page}&size=${size}&sort=${sort}&keyword=${encodeURIComponent(searchKey)}`, {
+        const response = await fetch(`http://localhost:8080/search?page=${page}&size=${size}&sort=${sort}&keyword=${searchKey}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
@@ -32,6 +32,11 @@ async function fetchProducts(page = 0, size = 10, sort = '', searchKey = '') {
 function displayProducts(products) {
     const productList = document.getElementById('product-list');
     productList.innerHTML = '';
+
+    if (products.length === 0) {
+        productList.innerHTML = '<p style="text-align:center; padding: 20px;">Không tìm thấy sản phẩm</p>';
+        return;
+    }
 
     products.forEach(product => {
         const productItem = document.createElement('div');
@@ -85,5 +90,3 @@ function filterProducts(sortCriteria) {
     currentPage_search = 0;
     fetchProducts(currentPage_search, pageSize_search, currentSort_search, searchKey_search);
 }
-
-fetchProducts(currentPage_search, pageSize_search);

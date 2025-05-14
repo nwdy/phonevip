@@ -53,6 +53,11 @@ document.addEventListener("DOMContentLoaded", async function () {
         document.getElementById("address").value = userData.data.address;
     } catch (error) {
         console.error("Lỗi khi tải thông tin người dùng:", error);
+        if (error.message && error.message.includes('401')) {
+            alert("Bạn chưa đăng nhập, hãy đăng nhập để sử dụng tính năng này.");
+        } else {
+            alert(`Có lỗi ${error.message || "Không xác định"}`);
+        }
     }
 });
 

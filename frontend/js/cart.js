@@ -79,6 +79,10 @@ async function loadCart() {
                 totalQuantity += item.quantity;
             }
         });
+
+        if (cartItems.length === 0) {
+            cartContainer.innerHTML = '<p style="text-align:center; padding: 20px;">Giỏ hàng chưa có sản phẩm</p>';
+        }
         
         document.getElementById("total-price").innerText = `Tổng giá trị đơn hàng: ${totalPrice.toLocaleString()} đ`;
         document.getElementById("total-quantity").innerText = `Số lượng sản phẩm: ${totalQuantity}`;
@@ -87,7 +91,11 @@ async function loadCart() {
         });
     } catch (error) {
         console.error("Lỗi khi tải giỏ hàng:", error);
-        alert(`Có lỗi ${error.message || "Không xác định"}`);
+        if (error.message && error.message.includes('401')) {
+            alert("Bạn chưa đăng nhập, hãy đăng nhập để sử dụng tính năng này.");
+        } else {
+            alert(`Có lỗi ${error.message || "Không xác định"}`);
+        }
     }
 }
 

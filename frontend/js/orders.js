@@ -52,7 +52,11 @@ async function fetchOrderHistory() {
         displayOrders(orders);
     } catch (error) {
         console.error('Lỗi khi tải lịch sử đơn hàng:', error);
-        document.getElementById('orders-container').innerHTML = '<p>Lỗi khi tải lịch sử đơn hàng. Vui lòng thử lại sau.</p>';
+        if (error.message && error.message.includes('401')) {
+            alert("Bạn chưa đăng nhập, hãy đăng nhập để sử dụng tính năng này.");
+        } else {
+            document.getElementById('orders-container').innerHTML = '<p>Lỗi khi tải lịch sử đơn hàng. Vui lòng thử lại sau.</p>';(`Có lỗi ${error.message || "Không xác định"}`);
+        }
     }
 }
 
@@ -60,6 +64,11 @@ async function fetchOrderHistory() {
 async function displayOrders(orders) {
     const ordersContainer = document.getElementById('orders-container');
     ordersContainer.innerHTML = '';
+
+    if (orders.length === 0) {
+        ordersContainer.innerHTML = '<p style="text-align:center; padding: 20px;">Bạn chưa có đơn hàng nào</p>';
+        return;
+    }
 
     for (const order of orders) {
         const orderElement = document.createElement('div');
